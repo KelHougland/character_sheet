@@ -4,10 +4,15 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 
 import * as serviceWorker from "./serviceWorker";
+import * as firebase from "firebase";
+
 import App from "./App";
 import reducer from "./store/reducer/reducer";
+import config from "../config";
 
 import "./index.css";
+
+firebase.initializeApp(config);
 
 const store = createStore(reducer);
 
