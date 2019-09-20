@@ -1,4 +1,4 @@
-const initialState = { character: "" };
+const initialState = { character: "Kros" };
 
 const reducer = (state = initialState, action) => {
   return state;
