@@ -11,6 +11,9 @@ class Home extends Component {
         Name: {character.name} | Speed: {character.speed + character.speedBonus}
         <button onClick={() => this.props.speedIncrement(character.id)}>
           +1
+        </button>
+        <button onClick={() => this.props.speedDecrement(character.id)}>
+          -1
         </button>{" "}
         | Initiative: {character.initiative} | Turns Taken:{" "}
         {character.turnCount}
@@ -36,7 +39,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     initiativePass: () => dispatch(actionCreators.initiativePass()),
-    speedIncrement: id => dispatch(actionCreators.speedIncrement(id))
+    speedIncrement: id => dispatch(actionCreators.speedIncrement(id)),
+    speedDecrement: id => dispatch(actionCreators.speedDecrement(id))
   };
 };
 

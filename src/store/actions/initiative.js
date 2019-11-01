@@ -7,3 +7,7 @@ export const initiativePass = () => {
 export const speedIncrement = resElId => {
   return { type: actionTypes.SPEED_INCREMENT, resultElId: resElId };
 };
+
+export const speedDecrement = resElId => {
+  return { type: actionTypes.SPEED_DECREMENT, resultElId: resElId };
+};

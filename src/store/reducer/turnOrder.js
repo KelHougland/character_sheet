@@ -53,17 +53,27 @@ const reducer = (state = initialState, action) => {
       }
       return updateObject(state, { characters: charList });
     case actionTypes.SPEED_INCREMENT:
-      let tempChars = [];
+      let incChars = [];
       charList.map(char => {
         if (char.id == action.resultElId) {
-          tempChars.push(
+          incChars.push(
             updateObject(char, { speedBonus: char.speedBonus + 1 })
           );
         } else {
-          tempChars.push(char);
+          incChars.push(char);
         }
       });
-      return updateObject(state, { characters: tempChars });
+      return updateObject(state, { characters: incChars });
+    case actionTypes.SPEED_DECREMENT:
+      let deChars = [];
+      charList.map(char => {
+        if (char.id == action.resultElId) {
+          deChars.push(updateObject(char, { speedBonus: char.speedBonus - 1 }));
+        } else {
+          deChars.push(char);
+        }
+      });
+      return updateObject(state, { characters: deChars });
   }
   return state;
 };

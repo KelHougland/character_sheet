@@ -1,1 +1,5 @@
-export { initiativePass, speedIncrement } from "./initiative.js";
+export {
+  initiativePass,
+  speedIncrement,
+  speedDecrement
+} from "./initiative.js";
