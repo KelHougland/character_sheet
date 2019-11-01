@@ -3,9 +3,9 @@ import { updateObject } from "../utility";
 
 const initialState = {
   characters: [
-    { name: "Ted", speed: 7, initiative: 12 },
-    { name: "Round", speed: 5, initiative: 0 },
-    { name: "Bill", speed: 6, initiative: 17 }
+    { name: "Ted", speed: 7, initiative: 12, turnCount: 0 },
+    { name: "Round", speed: 5, initiative: 0, turnCount: 0 },
+    { name: "Bill", speed: 6, initiative: 17, turnCount: 0 }
   ],
   view: "init"
 };
@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
         let tempChar = char;
         if (tempChar.initiative >= 50) {
           tempChar.initiative -= 50;
+          tempChar.turnCount += 1;
         }
         return tempChar.initiative;
       });

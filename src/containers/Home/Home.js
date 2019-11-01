@@ -9,7 +9,7 @@ class Home extends Component {
     let charView = this.props.chars.map(character => (
       <p>
         Name: {character.name} | Speed: {character.speed} | Initiative:{" "}
-        {character.initiative}
+        {character.initiative} | Turns Taken: {character.turnCount}
       </p>
     ));
 
