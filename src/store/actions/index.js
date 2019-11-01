@@ -1,1 +1,1 @@
-export { initiativePass } from "./initiative.js";
+export { initiativePass, speedIncrement } from "./initiative.js";
