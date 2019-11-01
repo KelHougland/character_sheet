@@ -24,9 +24,16 @@ export const initChange = (value, resElId) => {
   return { type: actionTypes.INIT_CHANGE, resultElId: resElId, val: value };
 };
 
-export const addChar = res => {
+export const addChar = char => {
   return {
     type: actionTypes.ADD_CHAR,
-    result: res
+    character: char
+  };
+};
+
+export const delChar = resElId => {
+  return {
+    type: actionTypes.DEL_CHAR,
+    resultElId: resElId
   };
 };

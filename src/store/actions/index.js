@@ -5,5 +5,6 @@ export {
   initIncrement5,
   initDecrement5,
   initChange,
-  addChar
+  addChar,
+  delChar
 } from "./initiative.js";

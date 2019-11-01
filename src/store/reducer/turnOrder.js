@@ -113,7 +113,22 @@ const reducer = (state = initialState, action) => {
       });
       return updateObject(state, { characters: changeInitChars });
     case actionTypes.ADD_CHAR:
-      return state;
+      let newChar = {
+        id: new Date(),
+        name: action.character.name,
+        speed: Number(action.character.speed),
+        speedBonus: 0,
+        initiative: Number(action.character.initiative),
+        turnCount: 0
+      };
+      return updateObject(state, {
+        characters: state.characters.concat(newChar)
+      });
+    case actionTypes.DEL_CHAR:
+      const updatedChars = state.characters.filter(
+        char => char.id !== action.resultElId
+      );
+      return updateObject(state, { characters: updatedChars });
   }
 
   return state;

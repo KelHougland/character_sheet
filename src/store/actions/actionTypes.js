@@ -11,3 +11,5 @@ export const INIT_DECREMENT5 = "INIT_DECREMENT5";
 export const INIT_CHANGE = "INIT_CHANGE";
 
 export const ADD_CHAR = "ADD_CHAR";
+
+export const DEL_CHAR = "DEL_CHAR";
