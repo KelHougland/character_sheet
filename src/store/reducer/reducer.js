@@ -14,7 +14,13 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INITIATIVEPASS:
       let charList = state.characters;
-      let charInits = charList.map(char => char.initiative);
+      let charInits = charList.map(char => {
+        let tempChar = char;
+        if (tempChar.initiative >= 50) {
+          tempChar.initiative -= 50;
+        }
+        return tempChar.initiative;
+      });
       let maxInit = Math.max(...charInits);
       while (maxInit < 50) {
         charList = charList.map(char =>
