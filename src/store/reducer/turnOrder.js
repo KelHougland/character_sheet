@@ -53,12 +53,17 @@ const reducer = (state = initialState, action) => {
       }
       return updateObject(state, { characters: charList });
     case actionTypes.SPEED_INCREMENT:
-      charList = charList.map(char => {
+      let tempChars = [];
+      charList.map(char => {
         if (char.id == action.resultElId) {
-          updateObject(char, { speed: char.speed + 1 });
+          tempChars.push(
+            updateObject(char, { speedBonus: char.speedBonus + 1 })
+          );
+        } else {
+          tempChars.push(char);
         }
       });
-      return updateObject(state, { characters: charList });
+      return updateObject(state, { characters: tempChars });
   }
   return state;
 };
