@@ -19,3 +19,14 @@ export const initIncrement5 = resElId => {
 export const initDecrement5 = resElId => {
   return { type: actionTypes.INIT_DECREMENT5, resultElId: resElId };
 };
+
+export const initChange = (value, resElId) => {
+  return { type: actionTypes.INIT_CHANGE, resultElId: resElId, val: value };
+};
+
+export const addChar = res => {
+  return {
+    type: actionTypes.ADD_CHAR,
+    result: res
+  };
+};

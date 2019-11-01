@@ -6,25 +6,29 @@ import Initiative from "./../Initiative/Initiative";
 
 class Home extends Component {
   render() {
-    let charView = this.props.chars.map(character => (
-      <p>
-        Name: {character.name} | Speed: {character.speed + character.speedBonus}
-        <button onClick={() => this.props.speedIncrement(character.id)}>
-          +1
-        </button>
-        <button onClick={() => this.props.speedDecrement(character.id)}>
-          -1
-        </button>{" "}
-        | Initiative: {character.initiative}{" "}
-        <button onClick={() => this.props.initIncrement5(character.id)}>
-          +5
-        </button>{" "}
-        <button onClick={() => this.props.initDecrement5(character.id)}>
-          -5
-        </button>
-        | Turns Taken: {character.turnCount}
-      </p>
-    ));
+    let charView = this.props.chars
+      .sort((a, b) => (a.initiative < b.initiative ? 1 : -1))
+      .map(character => (
+        <p>
+          Name: {character.name} | Speed:{" "}
+          {character.speed + character.speedBonus}
+          <button onClick={() => this.props.speedIncrement(character.id)}>
+            +1
+          </button>
+          <button onClick={() => this.props.speedDecrement(character.id)}>
+            -1
+          </button>{" "}
+          | Initiative: {character.initiative}{" "}
+          <button onClick={() => this.props.initIncrement5(character.id)}>
+            +5
+          </button>{" "}
+          <button onClick={() => this.props.initDecrement5(character.id)}>
+            -5
+          </button>
+          | Turns Taken: {character.turnCount}
+          <br />
+        </p>
+      ));
 
     return (
       <div>
@@ -48,7 +52,8 @@ const mapDispatchToProps = dispatch => {
     speedIncrement: id => dispatch(actionCreators.speedIncrement(id)),
     speedDecrement: id => dispatch(actionCreators.speedDecrement(id)),
     initIncrement5: id => dispatch(actionCreators.initIncrement5(id)),
-    initDecrement5: id => dispatch(actionCreators.initDecrement5(id))
+    initDecrement5: id => dispatch(actionCreators.initDecrement5(id)),
+    initChange: (value, id) => dispatch(actionCreators.initChange(value, id))
   };
 };
 

@@ -100,7 +100,22 @@ const reducer = (state = initialState, action) => {
         }
       });
       return updateObject(state, { characters: deInitChars });
+    case actionTypes.INIT_CHANGE:
+      let changeInitChars = [];
+      charList.map(char => {
+        if (char.id == action.resultElId) {
+          changeInitChars.push(
+            updateObject(char, { initiative: char.initiative + action.val })
+          );
+        } else {
+          changeInitChars.push(char);
+        }
+      });
+      return updateObject(state, { characters: changeInitChars });
+    case actionTypes.ADD_CHAR:
+      return state;
   }
+
   return state;
 };
 
