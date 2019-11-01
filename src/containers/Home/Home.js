@@ -8,8 +8,9 @@ class Home extends Component {
   render() {
     let charView = this.props.chars.map(character => (
       <p>
-        Name: {character.name} | Speed: {character.speed} | Initiative:{" "}
-        {character.initiative} | Turns Taken: {character.turnCount}
+        Name: {character.name} | Speed: {character.speed + character.speedBonus}{" "}
+        | Initiative: {character.initiative} | Turns Taken:{" "}
+        {character.turnCount}
       </p>
     ));
 

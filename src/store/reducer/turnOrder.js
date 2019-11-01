@@ -3,17 +3,38 @@ import { updateObject } from "../utility";
 
 const initialState = {
   characters: [
-    { id: "123", name: "Ted", speed: 7, initiative: 12, turnCount: 0 },
-    { id: "456", name: "Round", speed: 5, initiative: 0, turnCount: 0 },
-    { id: "789", name: "Bill", speed: 6, initiative: 17, turnCount: 0 }
+    {
+      id: "123",
+      name: "Ted",
+      speed: 7,
+      speedBonus: 0,
+      initiative: 12,
+      turnCount: 0
+    },
+    {
+      id: "456",
+      name: "Round",
+      speed: 5,
+      speedBonus: 0,
+      initiative: 0,
+      turnCount: 0
+    },
+    {
+      id: "789",
+      name: "Bill",
+      speed: 6,
+      speedBonus: 0,
+      initiative: 17,
+      turnCount: 0
+    }
   ],
   view: "init"
 };
 
 const reducer = (state = initialState, action) => {
+  let charList = state.characters;
   switch (action.type) {
-    case actionTypes.INITIATIVEPASS:
-      let charList = state.characters;
+    case actionTypes.INITIATIVE_PASS:
       let charInits = charList.map(char => {
         let tempChar = char;
         if (tempChar.initiative >= 50) {
@@ -30,6 +51,13 @@ const reducer = (state = initialState, action) => {
         charInits = charList.map(char => char.initiative);
         maxInit = Math.max(...charInits);
       }
+      return updateObject(state, { characters: charList });
+    case actionTypes.SPEED_INCREMENT:
+      charList = charList.map(char => {
+        if (char.id == action.resultElId) {
+          updateObject(char, { speed: char.speed + 1 });
+        }
+      });
       return updateObject(state, { characters: charList });
   }
   return state;
