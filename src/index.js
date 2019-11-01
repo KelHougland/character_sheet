@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
-import reducer from "./store/reducer/reducer";
+import reducer from "./store/reducer/turnOrder";
 
 import "./index.css";
 
