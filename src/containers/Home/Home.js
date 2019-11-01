@@ -15,8 +15,14 @@ class Home extends Component {
         <button onClick={() => this.props.speedDecrement(character.id)}>
           -1
         </button>{" "}
-        | Initiative: {character.initiative} | Turns Taken:{" "}
-        {character.turnCount}
+        | Initiative: {character.initiative}{" "}
+        <button onClick={() => this.props.initIncrement5(character.id)}>
+          +5
+        </button>{" "}
+        <button onClick={() => this.props.initDecrement5(character.id)}>
+          -5
+        </button>
+        | Turns Taken: {character.turnCount}
       </p>
     ));
 
@@ -40,7 +46,9 @@ const mapDispatchToProps = dispatch => {
   return {
     initiativePass: () => dispatch(actionCreators.initiativePass()),
     speedIncrement: id => dispatch(actionCreators.speedIncrement(id)),
-    speedDecrement: id => dispatch(actionCreators.speedDecrement(id))
+    speedDecrement: id => dispatch(actionCreators.speedDecrement(id)),
+    initIncrement5: id => dispatch(actionCreators.initIncrement5(id)),
+    initDecrement5: id => dispatch(actionCreators.initDecrement5(id))
   };
 };
 

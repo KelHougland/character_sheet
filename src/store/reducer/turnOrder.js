@@ -53,27 +53,53 @@ const reducer = (state = initialState, action) => {
       }
       return updateObject(state, { characters: charList });
     case actionTypes.SPEED_INCREMENT:
-      let incChars = [];
+      let incSpeedChars = [];
       charList.map(char => {
         if (char.id == action.resultElId) {
-          incChars.push(
+          incSpeedChars.push(
             updateObject(char, { speedBonus: char.speedBonus + 1 })
           );
         } else {
-          incChars.push(char);
+          incSpeedChars.push(char);
         }
       });
-      return updateObject(state, { characters: incChars });
+      return updateObject(state, { characters: incSpeedChars });
     case actionTypes.SPEED_DECREMENT:
-      let deChars = [];
+      let deSpeedChars = [];
       charList.map(char => {
         if (char.id == action.resultElId) {
-          deChars.push(updateObject(char, { speedBonus: char.speedBonus - 1 }));
+          deSpeedChars.push(
+            updateObject(char, { speedBonus: char.speedBonus - 1 })
+          );
         } else {
-          deChars.push(char);
+          deSpeedChars.push(char);
         }
       });
-      return updateObject(state, { characters: deChars });
+      return updateObject(state, { characters: deSpeedChars });
+    case actionTypes.INIT_INCREMENT5:
+      let incInitChars = [];
+      charList.map(char => {
+        if (char.id == action.resultElId) {
+          incInitChars.push(
+            updateObject(char, { initiative: char.initiative + 5 })
+          );
+        } else {
+          incInitChars.push(char);
+        }
+      });
+      return updateObject(state, { characters: incInitChars });
+    case actionTypes.INIT_DECREMENT5:
+      let deInitChars = [];
+      charList.map(char => {
+        if (char.id == action.resultElId) {
+          deInitChars.push(
+            updateObject(char, { initiative: char.initiative - 5 })
+          );
+        } else {
+          deInitChars.push(char);
+        }
+      });
+      return updateObject(state, { characters: deInitChars });
   }
   return state;
 };

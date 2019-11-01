@@ -1,5 +1,7 @@
 export {
   initiativePass,
   speedIncrement,
-  speedDecrement
+  speedDecrement,
+  initIncrement5,
+  initDecrement5
 } from "./initiative.js";
