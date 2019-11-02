@@ -12,6 +12,14 @@ export const speedDecrement = resElId => {
   return { type: actionTypes.SPEED_DECREMENT, resultElId: resElId };
 };
 
+export const initIncrement1 = resElId => {
+  return { type: actionTypes.INIT_INCREMENT1, resultElId: resElId };
+};
+
+export const initDecrement1 = resElId => {
+  return { type: actionTypes.INIT_DECREMENT1, resultElId: resElId };
+};
+
 export const initIncrement5 = resElId => {
   return { type: actionTypes.INIT_INCREMENT5, resultElId: resElId };
 };

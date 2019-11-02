@@ -50,6 +50,12 @@ class Home extends Component {
             -1
           </button>{" "}
           | Initiative: {character.initiative}{" "}
+          <button onClick={() => this.props.initIncrement1(character.id)}>
+            +1
+          </button>{" "}
+          <button onClick={() => this.props.initDecrement1(character.id)}>
+            -1
+          </button>{" "}
           <button onClick={() => this.props.initIncrement5(character.id)}>
             +5
           </button>{" "}
@@ -109,6 +115,8 @@ const mapDispatchToProps = dispatch => {
     initiativePass: () => dispatch(actionCreators.initiativePass()),
     speedIncrement: id => dispatch(actionCreators.speedIncrement(id)),
     speedDecrement: id => dispatch(actionCreators.speedDecrement(id)),
+    initIncrement1: id => dispatch(actionCreators.initIncrement1(id)),
+    initDecrement1: id => dispatch(actionCreators.initDecrement1(id)),
     initIncrement5: id => dispatch(actionCreators.initIncrement5(id)),
     initDecrement5: id => dispatch(actionCreators.initDecrement5(id)),
     initChange: (value, id) => dispatch(actionCreators.initChange(value, id)),
