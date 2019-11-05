@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Table, Button } from "semantic-ui-react";
 
 import * as actionCreators from "../../store/actions/index";
 import Initiative from "./../Initiative/Initiative";
@@ -58,38 +59,45 @@ class Home extends Component {
       disabledText = null;
     }
     let addCharForm = (
-      <div>
-        <input
-          type="text"
-          value={this.state.newChar.name}
-          onChange={this.changeNameHandler}
-        ></input>
-        <input
-          type="text"
-          value={this.state.newChar.speed}
-          onChange={this.changeSpeedHandler}
-        ></input>
-        <input
-          type="text"
-          value={this.state.newChar.initiative}
-          onChange={this.changeInitHandler}
-        ></input>
-        <button
-          onClick={() => this.props.addChar(this.state.newChar)}
-          disabled={addDisabled}
-        >
-          Add Char
-        </button>
-        <br />
-        {disabledText}
-      </div>
+      <Table.Footer>
+        <Table.Row>
+          <Table.HeaderCell>
+            <input
+              type="text"
+              value={this.state.newChar.name}
+              onChange={this.changeNameHandler}
+            ></input>
+          </Table.HeaderCell>
+          <Table.HeaderCell>
+            <input
+              type="text"
+              value={this.state.newChar.speed}
+              onChange={this.changeSpeedHandler}
+            ></input>
+          </Table.HeaderCell>
+          <Table.HeaderCell>
+            <input
+              type="text"
+              value={this.state.newChar.initiative}
+              onChange={this.changeInitHandler}
+            ></input>
+          </Table.HeaderCell>
+          <Table.HeaderCell>0</Table.HeaderCell>
+          <Table.HeaderCell>
+            <button
+              onClick={() => this.props.addChar(this.state.newChar)}
+              disabled={addDisabled}
+            >
+              Add Char
+            </button>
+          </Table.HeaderCell>
+        </Table.Row>
+      </Table.Footer>
     );
 
     return (
       <div>
-        {/* {charView} */}
-        <Initiative />
-        {addCharForm}
+        <Initiative charForm={addCharForm} bottomText={disabledText} />
       </div>
     );
   }

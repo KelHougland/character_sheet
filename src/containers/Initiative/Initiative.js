@@ -48,41 +48,6 @@ class Initiative extends Component {
         </Table.Row>
       ));
 
-    // let charView = this.props.chars
-    //   .sort((a, b) => (a.initiative < b.initiative ? 1 : -1))
-    //   .map(character => (
-    //     <p>
-    //       Name: {character.name} | Speed:{" "}
-    //       {character.speed + character.speedBonus}
-    //       <button onClick={() => this.props.speedIncrement(character.id)}>
-    //         +1
-    //       </button>
-    //       <button onClick={() => this.props.speedDecrement(character.id)}>
-    //         -1
-    //       </button>{" "}
-    //       | Initiative: {character.initiative}{" "}
-    //       <button onClick={() => this.props.initIncrement1(character.id)}>
-    //         +1
-    //       </button>{" "}
-    //       <button onClick={() => this.props.initDecrement1(character.id)}>
-    //         -1
-    //       </button>{" "}
-    //       <button onClick={() => this.props.initIncrement5(character.id)}>
-    //         +5
-    //       </button>{" "}
-    //       <button onClick={() => this.props.initDecrement5(character.id)}>
-    //         -5
-    //       </button>
-    //       | Turns Taken: {character.turnCount}
-    //       <button
-    //         onClick={() => this.props.delChar(character.id)}
-    //         disabled={character.name === "Round"}
-    //       >
-    //         Delete
-    //       </button>
-    //       <br />
-    //     </p>
-    //   ));
     return (
       <div>
         <Table celled>
@@ -92,12 +57,15 @@ class Initiative extends Component {
               <Table.HeaderCell>Speed</Table.HeaderCell>
               <Table.HeaderCell>Initiative</Table.HeaderCell>
               <Table.HeaderCell>Turns Taken</Table.HeaderCell>
-              <Table.HeaderCell>Delete</Table.HeaderCell>
+              <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>{charView}</Table.Body>
+          {this.props.charForm}
         </Table>
         <button onClick={this.props.initiativePass}>Next Turn</button>
+        <br />
+        {this.props.bottomText}
       </div>
     );
   }
