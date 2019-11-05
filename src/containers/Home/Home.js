@@ -6,7 +6,12 @@ import Initiative from "./../Initiative/Initiative";
 
 class Home extends Component {
   state = {
-    newChar: { name: "name", speed: "speed", initiative: "initiative" }
+    newChar: {
+      name: "name",
+      speed: "speed",
+      initiative: "initiative",
+      type: "PC"
+    }
   };
 
   changeNameHandler = event => {
@@ -37,6 +42,21 @@ class Home extends Component {
   };
 
   render() {
+    let charNames = this.props.chars.map(char => char.name.toLowerCase());
+    charNames.push("");
+    charNames.push("name");
+    charNames.push("round");
+    let addDisabled = true;
+    let disabledText =
+      "Please valid name, speed, and initiative to add a character";
+    if (
+      !charNames.includes(this.state.newChar.name.toLowerCase()) &&
+      !isNaN(this.state.newChar.speed) &&
+      !isNaN(this.state.newChar.initiative)
+    ) {
+      addDisabled = false;
+      disabledText = null;
+    }
     let addCharForm = (
       <div>
         <input
@@ -54,9 +74,14 @@ class Home extends Component {
           value={this.state.newChar.initiative}
           onChange={this.changeInitHandler}
         ></input>
-        <button onClick={() => this.props.addChar(this.state.newChar)}>
+        <button
+          onClick={() => this.props.addChar(this.state.newChar)}
+          disabled={addDisabled}
+        >
           Add Char
         </button>
+        <br />
+        {disabledText}
       </div>
     );
 

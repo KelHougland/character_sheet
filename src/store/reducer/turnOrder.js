@@ -9,7 +9,8 @@ const initialState = {
       speed: 5,
       speedBonus: 0,
       initiative: 0,
-      turnCount: 0
+      turnCount: 0,
+      type: "NPC"
     }
   ],
   view: "init"
@@ -60,30 +61,30 @@ const reducer = (state = initialState, action) => {
         }
       });
       return updateObject(state, { characters: deSpeedChars });
-      case actionTypes.INIT_INCREMENT1:
-        let inc1InitChars = [];
-        charList.map(char => {
-          if (char.id == action.resultElId) {
-            inc1InitChars.push(
-              updateObject(char, { initiative: char.initiative + 1 })
-            );
-          } else {
-            inc1InitChars.push(char);
-          }
-        });
-        return updateObject(state, { characters: inc1InitChars });
-      case actionTypes.INIT_DECREMENT1:
-        let de1InitChars = [];
-        charList.map(char => {
-          if (char.id == action.resultElId) {
-            de1InitChars.push(
-              updateObject(char, { initiative: char.initiative - 1 })
-            );
-          } else {
-            de1InitChars.push(char);
-          }
-        });
-        return updateObject(state, { characters: de1InitChars });
+    case actionTypes.INIT_INCREMENT1:
+      let inc1InitChars = [];
+      charList.map(char => {
+        if (char.id == action.resultElId) {
+          inc1InitChars.push(
+            updateObject(char, { initiative: char.initiative + 1 })
+          );
+        } else {
+          inc1InitChars.push(char);
+        }
+      });
+      return updateObject(state, { characters: inc1InitChars });
+    case actionTypes.INIT_DECREMENT1:
+      let de1InitChars = [];
+      charList.map(char => {
+        if (char.id == action.resultElId) {
+          de1InitChars.push(
+            updateObject(char, { initiative: char.initiative - 1 })
+          );
+        } else {
+          de1InitChars.push(char);
+        }
+      });
+      return updateObject(state, { characters: de1InitChars });
     case actionTypes.INIT_INCREMENT5:
       let inc5InitChars = [];
       charList.map(char => {
