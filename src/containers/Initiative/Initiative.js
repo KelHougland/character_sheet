@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import { Button, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions/index";
@@ -13,37 +13,37 @@ class Initiative extends Component {
           <Table.Cell>{character.name}</Table.Cell>
           <Table.Cell>
             {character.speed + character.speedBonus}{" "}
-            <button onClick={() => this.props.speedIncrement(character.id)}>
+            <Button onClick={() => this.props.speedIncrement(character.id)}>
               +1
-            </button>
-            <button onClick={() => this.props.speedDecrement(character.id)}>
+            </Button>
+            <Button onClick={() => this.props.speedDecrement(character.id)}>
               -1
-            </button>
+            </Button>
           </Table.Cell>
           <Table.Cell>
             {character.initiative}
-            <button onClick={() => this.props.initIncrement1(character.id)}>
+            <Button onClick={() => this.props.initIncrement1(character.id)}>
               +1
-            </button>
-            <button onClick={() => this.props.initDecrement1(character.id)}>
+            </Button>
+            <Button onClick={() => this.props.initDecrement1(character.id)}>
               -1
-            </button>
-            <button onClick={() => this.props.initIncrement5(character.id)}>
+            </Button>
+            <Button onClick={() => this.props.initIncrement5(character.id)}>
               +5
-            </button>
-            <button onClick={() => this.props.initDecrement5(character.id)}>
+            </Button>
+            <Button onClick={() => this.props.initDecrement5(character.id)}>
               -5
-            </button>
+            </Button>
           </Table.Cell>
           <Table.Cell>{character.turnCount}</Table.Cell>
           <Table.Cell>
             {" "}
-            <button
+            <Button
               onClick={() => this.props.delChar(character.id)}
               disabled={character.name === "Round"}
             >
               X
-            </button>
+            </Button>
           </Table.Cell>
         </Table.Row>
       ));
@@ -63,7 +63,7 @@ class Initiative extends Component {
           <Table.Body>{charView}</Table.Body>
           {this.props.charForm}
         </Table>
-        <button onClick={this.props.initiativePass}>Next Turn</button>
+        <Button onClick={this.props.initiativePass}>Next Turn</Button>
         <br />
         {this.props.bottomText}
       </div>
