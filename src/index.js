@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
+import "semantic-ui-css/semantic.min.css";
 
 import * as serviceWorker from "./serviceWorker";
-
 
 import App from "./App";
 import reducer from "./store/reducer/turnOrder";
