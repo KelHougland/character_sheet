@@ -32,7 +32,10 @@ class Initiative extends Component {
             -5
           </button>
           | Turns Taken: {character.turnCount}
-          <button onClick={() => this.props.delChar(character.id)}>
+          <button
+            onClick={() => this.props.delChar(character.id)}
+            disabled={character.name === "Round"}
+          >
             Delete
           </button>
           <br />
