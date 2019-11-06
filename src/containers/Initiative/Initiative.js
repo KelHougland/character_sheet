@@ -9,7 +9,7 @@ class Initiative extends Component {
     let charView = this.props.chars
       .sort((a, b) => (a.initiative < b.initiative ? 1 : -1))
       .map(character => (
-        <Table.Row>
+        <Table.Row key={character.id}>
           <Table.Cell>{character.name}</Table.Cell>
           <Table.Cell>
             {character.speed + character.speedBonus}{" "}

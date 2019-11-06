@@ -18,8 +18,8 @@ class Home extends Component {
       "Please valid name, speed, and initiative to add a character";
     if (
       !charNames.includes(this.props.addCharacter.name.toLowerCase()) &&
-      !isNaN(this.props.addCharacter.speed) &&
-      !isNaN(this.props.addCharacter.initiative)
+      !isNaN(Number(this.props.addCharacter.speed)) &&
+      !isNaN(Number(this.props.addCharacter.initiative))
     ) {
       addDisabled = false;
       disabledText = null;
@@ -57,7 +57,9 @@ class Home extends Component {
           <Table.HeaderCell>0</Table.HeaderCell>
           <Table.HeaderCell>
             <Button
-              onClick={() => this.props.addChar(this.props.addCharacter)}
+              onClick={() =>
+                this.props.addChar(Object.assign({}, this.props.addCharacter))
+              }
               disabled={addDisabled}
             >
               +

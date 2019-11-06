@@ -45,7 +45,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = [];
       charList.map(char => {
-        if (char.id == action.resultElId) {
+        if (char.id === action.resultElId) {
           incSpeedChars.push(
             updateObject(char, { speedBonus: char.speedBonus + 1 })
           );
@@ -57,7 +57,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SPEED_DECREMENT:
       let deSpeedChars = [];
       charList.map(char => {
-        if (char.id == action.resultElId) {
+        if (char.id === action.resultElId) {
           deSpeedChars.push(
             updateObject(char, { speedBonus: char.speedBonus - 1 })
           );
@@ -69,7 +69,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.INIT_INCREMENT1:
       let inc1InitChars = [];
       charList.map(char => {
-        if (char.id == action.resultElId) {
+        if (char.id === action.resultElId) {
           inc1InitChars.push(
             updateObject(char, { initiative: char.initiative + 1 })
           );
@@ -81,7 +81,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.INIT_DECREMENT1:
       let de1InitChars = [];
       charList.map(char => {
-        if (char.id == action.resultElId) {
+        if (char.id === action.resultElId) {
           de1InitChars.push(
             updateObject(char, { initiative: char.initiative - 1 })
           );
@@ -93,7 +93,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.INIT_INCREMENT5:
       let inc5InitChars = [];
       charList.map(char => {
-        if (char.id == action.resultElId) {
+        if (char.id === action.resultElId) {
           inc5InitChars.push(
             updateObject(char, { initiative: char.initiative + 5 })
           );
@@ -105,7 +105,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.INIT_DECREMENT5:
       let de5InitChars = [];
       charList.map(char => {
-        if (char.id == action.resultElId) {
+        if (char.id === action.resultElId) {
           de5InitChars.push(
             updateObject(char, { initiative: char.initiative - 5 })
           );
@@ -115,6 +115,7 @@ const reducer = (state = initialState, action) => {
       });
       return updateObject(state, { charactersInCombat: de5InitChars });
     case actionTypes.ADD_CHAR:
+      console.log(action.character);
       let newChar = {
         id: new Date(),
         name: action.character.name,
@@ -136,7 +137,7 @@ const reducer = (state = initialState, action) => {
       let midNameChar = {
         name: action.name,
         speed: state.addChar.speed,
-        initative: state.addChar.initiative
+        initiative: state.addChar.initiative
       };
 
       return updateObject(state, { addChar: midNameChar });
@@ -145,7 +146,7 @@ const reducer = (state = initialState, action) => {
       let midSpeedChar = {
         name: state.addChar.name,
         speed: action.speed,
-        initative: state.addChar.initiative
+        initiative: state.addChar.initiative
       };
       return updateObject(state, { addChar: midSpeedChar });
 
@@ -153,13 +154,13 @@ const reducer = (state = initialState, action) => {
       let midInitChar = {
         name: state.addChar.name,
         speed: state.addChar.speed,
-        initative: action.init
+        initiative: action.init
       };
 
       return updateObject(state, { addChar: midInitChar });
+    default:
+      return state;
   }
-
-  return state;
 };
 
 export default reducer;
