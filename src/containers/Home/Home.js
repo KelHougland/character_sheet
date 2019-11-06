@@ -105,7 +105,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    chars: state.characters,
+    chars: state.charactersInCombat,
     view: state.view
   };
 };

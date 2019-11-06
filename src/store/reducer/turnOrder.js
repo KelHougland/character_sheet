@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  characters: [
+  charactersInCombat: [
     {
       id: "456",
       name: "Round",
@@ -17,7 +17,7 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  let charList = state.characters;
+  let charList = state.charactersInCombat;
   switch (action.type) {
     case actionTypes.INITIATIVE_PASS:
       let charInits = charList.map(char => {
@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
         charInits = charList.map(char => char.initiative);
         maxInit = Math.max(...charInits);
       }
-      return updateObject(state, { characters: charList });
+      return updateObject(state, { charactersInCombat: charList });
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = [];
       charList.map(char => {
@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
           incSpeedChars.push(char);
         }
       });
-      return updateObject(state, { characters: incSpeedChars });
+      return updateObject(state, { charactersInCombat: incSpeedChars });
     case actionTypes.SPEED_DECREMENT:
       let deSpeedChars = [];
       charList.map(char => {
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
           deSpeedChars.push(char);
         }
       });
-      return updateObject(state, { characters: deSpeedChars });
+      return updateObject(state, { charactersInCombat: deSpeedChars });
     case actionTypes.INIT_INCREMENT1:
       let inc1InitChars = [];
       charList.map(char => {
@@ -72,7 +72,7 @@ const reducer = (state = initialState, action) => {
           inc1InitChars.push(char);
         }
       });
-      return updateObject(state, { characters: inc1InitChars });
+      return updateObject(state, { charactersInCombat: inc1InitChars });
     case actionTypes.INIT_DECREMENT1:
       let de1InitChars = [];
       charList.map(char => {
@@ -84,7 +84,7 @@ const reducer = (state = initialState, action) => {
           de1InitChars.push(char);
         }
       });
-      return updateObject(state, { characters: de1InitChars });
+      return updateObject(state, { charactersInCombat: de1InitChars });
     case actionTypes.INIT_INCREMENT5:
       let inc5InitChars = [];
       charList.map(char => {
@@ -96,7 +96,7 @@ const reducer = (state = initialState, action) => {
           inc5InitChars.push(char);
         }
       });
-      return updateObject(state, { characters: inc5InitChars });
+      return updateObject(state, { charactersInCombat: inc5InitChars });
     case actionTypes.INIT_DECREMENT5:
       let de5InitChars = [];
       charList.map(char => {
@@ -108,7 +108,7 @@ const reducer = (state = initialState, action) => {
           de5InitChars.push(char);
         }
       });
-      return updateObject(state, { characters: de5InitChars });
+      return updateObject(state, { charactersInCombat: de5InitChars });
     case actionTypes.INIT_CHANGE:
       let changeInitChars = [];
       charList.map(char => {
@@ -120,7 +120,7 @@ const reducer = (state = initialState, action) => {
           changeInitChars.push(char);
         }
       });
-      return updateObject(state, { characters: changeInitChars });
+      return updateObject(state, { charactersInCombat: changeInitChars });
     case actionTypes.ADD_CHAR:
       let newChar = {
         id: new Date(),
@@ -131,13 +131,13 @@ const reducer = (state = initialState, action) => {
         turnCount: 0
       };
       return updateObject(state, {
-        characters: state.characters.concat(newChar)
+        charactersInCombat: state.charactersInCombat.concat(newChar)
       });
     case actionTypes.DEL_CHAR:
-      const updatedChars = state.characters.filter(
+      const updatedChars = state.charactersInCombat.filter(
         char => char.id !== action.resultElId
       );
-      return updateObject(state, { characters: updatedChars });
+      return updateObject(state, { charactersInCombat: updatedChars });
   }
 
   return state;

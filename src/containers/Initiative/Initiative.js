@@ -73,7 +73,7 @@ class Initiative extends Component {
 
 const mapStateToProps = state => {
   return {
-    chars: state.characters
+    chars: state.charactersInCombat
   };
 };
 
