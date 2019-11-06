@@ -9,6 +9,23 @@ import TableContent from "../../components/InitiativeTracker/TableContent/TableC
 
 class Initiative extends Component {
   render() {
+    let charNames = this.props.charsInCombat.map(char =>
+      char.name.toLowerCase()
+    );
+    charNames.push("");
+    charNames.push("name");
+    charNames.push("round");
+    let addDisabled = true;
+    let disabledText =
+      "Please valid name, speed, and initiative to add a character";
+    if (
+      !charNames.includes(this.props.addCharacter.name.toLowerCase()) &&
+      !isNaN(Number(this.props.addCharacter.speed)) &&
+      !isNaN(Number(this.props.addCharacter.initiative))
+    ) {
+      addDisabled = false;
+      disabledText = null;
+    }
     return (
       <div>
         <Table celled>
@@ -21,7 +38,10 @@ class Initiative extends Component {
               <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          <TableContent charList={this.props.chars} propsToPass={this.props} />
+          <TableContent
+            charList={this.props.charsInCombat}
+            propsToPass={this.props}
+          />
           {this.props.charForm}
           <AddCharForm
             charName={this.props.addCharacter.name}
@@ -32,13 +52,14 @@ class Initiative extends Component {
             changeInit={this.props.changeAddCharInit}
             addChar={this.props.addChar}
             charToAdd={this.props.addCharacter}
+            addDisable={addDisabled}
           />
         </Table>
 
         <Button onClick={this.props.initiativePass}>Next Turn</Button>
 
         <br />
-        {this.props.bottomText}
+        {disabledText}
       </div>
     );
   }
@@ -46,7 +67,7 @@ class Initiative extends Component {
 
 const mapStateToProps = state => {
   return {
-    chars: state.charactersInCombat,
+    charsInCombat: state.charactersInCombat,
     addCharacter: state.addChar
   };
 };

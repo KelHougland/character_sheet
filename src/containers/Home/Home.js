@@ -23,15 +23,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    addChar: character => dispatch(actionCreators.addChar(character)),
-    changeAddCharName: newName =>
-      dispatch(actionCreators.changeAddCharName(newName)),
-    changeAddCharSpeed: newSpeed =>
-      dispatch(actionCreators.changeAddCharSpeed(newSpeed)),
-    changeAddCharInit: newInit =>
-      dispatch(actionCreators.changeAddCharInit(newInit))
-  };
+  return {};
 };
 
 export default connect(
