@@ -7,71 +7,9 @@ import Initiative from "./../Initiative/Initiative";
 
 class Home extends Component {
   render() {
-    let charNames = this.props.charsInCombat.map(char =>
-      char.name.toLowerCase()
-    );
-    charNames.push("");
-    charNames.push("name");
-    charNames.push("round");
-    let addDisabled = true;
-    let disabledText =
-      "Please valid name, speed, and initiative to add a character";
-    if (
-      !charNames.includes(this.props.addCharacter.name.toLowerCase()) &&
-      !isNaN(Number(this.props.addCharacter.speed)) &&
-      !isNaN(Number(this.props.addCharacter.initiative))
-    ) {
-      addDisabled = false;
-      disabledText = null;
-    }
-    let addCharForm = (
-      <Table.Footer>
-        <Table.Row>
-          <Table.HeaderCell>
-            <input
-              type="text"
-              value={this.props.addCharacter.name}
-              onChange={event =>
-                this.props.changeAddCharName(event.target.value)
-              }
-            ></input>
-          </Table.HeaderCell>
-          <Table.HeaderCell>
-            <input
-              type="text"
-              value={this.props.addCharacter.speed}
-              onChange={event =>
-                this.props.changeAddCharSpeed(event.target.value)
-              }
-            ></input>
-          </Table.HeaderCell>
-          <Table.HeaderCell>
-            <input
-              type="text"
-              value={this.props.addCharacter.initiative}
-              onChange={event =>
-                this.props.changeAddCharInit(event.target.value)
-              }
-            ></input>
-          </Table.HeaderCell>
-          <Table.HeaderCell>0</Table.HeaderCell>
-          <Table.HeaderCell>
-            <Button
-              onClick={() =>
-                this.props.addChar(Object.assign({}, this.props.addCharacter))
-              }
-              disabled={addDisabled}
-            >
-              +
-            </Button>
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Footer>
-    );
-
     return (
       <div>
-        <Initiative charForm={addCharForm} bottomText={disabledText} />
+        <Initiative />
       </div>
     );
   }

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import * as actionCreators from "../../store/actions/index";
 
+import AddCharForm from "../../components/InitiativeTracker/AddCharInit/AddCharInit";
+
 class Initiative extends Component {
   render() {
     let charView = this.props.chars
@@ -21,7 +23,7 @@ class Initiative extends Component {
             </Button>
           </Table.Cell>
           <Table.Cell>
-            {character.initiative}
+            {character.initiative}{" "}
             <Button onClick={() => this.props.initIncrement1(character.id)}>
               +1
             </Button>
@@ -62,8 +64,20 @@ class Initiative extends Component {
           </Table.Header>
           <Table.Body>{charView}</Table.Body>
           {this.props.charForm}
+          <AddCharForm
+            charName={this.props.addCharacter.name}
+            charSpeed={this.props.addCharacter.speed}
+            charInit={this.props.addCharacter.initiative}
+            changeName={this.props.changeAddCharName}
+            changeSpeed={this.props.changeAddCharSpeed}
+            changeInit={this.props.changeAddCharInit}
+            addChar={this.props.addChar}
+            charToAdd={this.props.addCharacter}
+          />
         </Table>
+
         <Button onClick={this.props.initiativePass}>Next Turn</Button>
+
         <br />
         {this.props.bottomText}
       </div>
@@ -74,7 +88,7 @@ class Initiative extends Component {
 const mapStateToProps = state => {
   return {
     chars: state.charactersInCombat,
-    addChar: state.addChar
+    addCharacter: state.addChar
   };
 };
 
@@ -87,7 +101,14 @@ const mapDispatchToProps = dispatch => {
     initDecrement1: id => dispatch(actionCreators.initDecrement1(id)),
     initIncrement5: id => dispatch(actionCreators.initIncrement5(id)),
     initDecrement5: id => dispatch(actionCreators.initDecrement5(id)),
-    delChar: id => dispatch(actionCreators.delChar(id))
+    delChar: id => dispatch(actionCreators.delChar(id)),
+    addChar: character => dispatch(actionCreators.addChar(character)),
+    changeAddCharName: newName =>
+      dispatch(actionCreators.changeAddCharName(newName)),
+    changeAddCharSpeed: newSpeed =>
+      dispatch(actionCreators.changeAddCharSpeed(newSpeed)),
+    changeAddCharInit: newInit =>
+      dispatch(actionCreators.changeAddCharInit(newInit))
   };
 };
 
