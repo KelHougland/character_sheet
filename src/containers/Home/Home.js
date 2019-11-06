@@ -88,7 +88,7 @@ class Home extends Component {
               onClick={() => this.props.addChar(this.state.newChar)}
               disabled={addDisabled}
             >
-              Add Char
+              +
             </Button>
           </Table.HeaderCell>
         </Table.Row>

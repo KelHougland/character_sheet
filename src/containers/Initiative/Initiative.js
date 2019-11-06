@@ -42,7 +42,7 @@ class Initiative extends Component {
               onClick={() => this.props.delChar(character.id)}
               disabled={character.name === "Round"}
             >
-              X
+              x
             </Button>
           </Table.Cell>
         </Table.Row>
