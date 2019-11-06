@@ -5,51 +5,10 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../store/actions/index";
 
 import AddCharForm from "../../components/InitiativeTracker/AddCharInit/AddCharInit";
+import TableContent from "../../components/InitiativeTracker/TableContent/TableContent";
 
 class Initiative extends Component {
   render() {
-    let charView = this.props.chars
-      .sort((a, b) => (a.initiative < b.initiative ? 1 : -1))
-      .map(character => (
-        <Table.Row key={character.id}>
-          <Table.Cell>{character.name}</Table.Cell>
-          <Table.Cell>
-            {character.speed + character.speedBonus}{" "}
-            <Button onClick={() => this.props.speedIncrement(character.id)}>
-              +1
-            </Button>
-            <Button onClick={() => this.props.speedDecrement(character.id)}>
-              -1
-            </Button>
-          </Table.Cell>
-          <Table.Cell>
-            {character.initiative}{" "}
-            <Button onClick={() => this.props.initIncrement1(character.id)}>
-              +1
-            </Button>
-            <Button onClick={() => this.props.initDecrement1(character.id)}>
-              -1
-            </Button>
-            <Button onClick={() => this.props.initIncrement5(character.id)}>
-              +5
-            </Button>
-            <Button onClick={() => this.props.initDecrement5(character.id)}>
-              -5
-            </Button>
-          </Table.Cell>
-          <Table.Cell>{character.turnCount}</Table.Cell>
-          <Table.Cell>
-            {" "}
-            <Button
-              onClick={() => this.props.delChar(character.id)}
-              disabled={character.name === "Round"}
-            >
-              x
-            </Button>
-          </Table.Cell>
-        </Table.Row>
-      ));
-
     return (
       <div>
         <Table celled>
@@ -62,7 +21,7 @@ class Initiative extends Component {
               <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          <Table.Body>{charView}</Table.Body>
+          <TableContent charList={this.props.chars} propsToPass={this.props} />
           {this.props.charForm}
           <AddCharForm
             charName={this.props.addCharacter.name}
