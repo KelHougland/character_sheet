@@ -13,7 +13,12 @@ const initialState = {
       type: "NPC"
     }
   ],
-  view: "init"
+  addChar: {
+    name: "name",
+    speed: "speed",
+    initiative: "initiative",
+    type: "PC"
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -109,18 +114,6 @@ const reducer = (state = initialState, action) => {
         }
       });
       return updateObject(state, { charactersInCombat: de5InitChars });
-    case actionTypes.INIT_CHANGE:
-      let changeInitChars = [];
-      charList.map(char => {
-        if (char.id == action.resultElId) {
-          changeInitChars.push(
-            updateObject(char, { initiative: char.initiative + action.val })
-          );
-        } else {
-          changeInitChars.push(char);
-        }
-      });
-      return updateObject(state, { charactersInCombat: changeInitChars });
     case actionTypes.ADD_CHAR:
       let newChar = {
         id: new Date(),
@@ -138,6 +131,32 @@ const reducer = (state = initialState, action) => {
         char => char.id !== action.resultElId
       );
       return updateObject(state, { charactersInCombat: updatedChars });
+
+    case actionTypes.CHANGE_ADDCHAR_NAME:
+      let midNameChar = {
+        name: action.name,
+        speed: state.addChar.speed,
+        initative: state.addChar.initiative
+      };
+
+      return updateObject(state, { addChar: midNameChar });
+
+    case actionTypes.CHANGE_ADDCHAR_SPEED:
+      let midSpeedChar = {
+        name: state.addChar.name,
+        speed: action.speed,
+        initative: state.addChar.initiative
+      };
+      return updateObject(state, { addChar: midSpeedChar });
+
+    case actionTypes.CHANGE_ADDCHAR_INIT:
+      let midInitChar = {
+        name: state.addChar.name,
+        speed: state.addChar.speed,
+        initative: action.init
+      };
+
+      return updateObject(state, { addChar: midInitChar });
   }
 
   return state;

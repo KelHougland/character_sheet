@@ -73,7 +73,8 @@ class Initiative extends Component {
 
 const mapStateToProps = state => {
   return {
-    chars: state.charactersInCombat
+    chars: state.charactersInCombat,
+    addChar: state.addChar
   };
 };
 
@@ -86,7 +87,6 @@ const mapDispatchToProps = dispatch => {
     initDecrement1: id => dispatch(actionCreators.initDecrement1(id)),
     initIncrement5: id => dispatch(actionCreators.initIncrement5(id)),
     initDecrement5: id => dispatch(actionCreators.initDecrement5(id)),
-    initChange: (value, id) => dispatch(actionCreators.initChange(value, id)),
     delChar: id => dispatch(actionCreators.delChar(id))
   };
 };

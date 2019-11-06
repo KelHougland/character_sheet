@@ -6,7 +6,9 @@ export {
   initDecrement1,
   initIncrement5,
   initDecrement5,
-  initChange,
   addChar,
-  delChar
+  delChar,
+  changeAddCharInit,
+  changeAddCharName,
+  changeAddCharSpeed
 } from "./initiative.js";

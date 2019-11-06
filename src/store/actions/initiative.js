@@ -28,10 +28,6 @@ export const initDecrement5 = resElId => {
   return { type: actionTypes.INIT_DECREMENT5, resultElId: resElId };
 };
 
-export const initChange = (value, resElId) => {
-  return { type: actionTypes.INIT_CHANGE, resultElId: resElId, val: value };
-};
-
 export const addChar = char => {
   return {
     type: actionTypes.ADD_CHAR,
@@ -43,5 +39,26 @@ export const delChar = resElId => {
   return {
     type: actionTypes.DEL_CHAR,
     resultElId: resElId
+  };
+};
+
+export const changeAddCharName = charName => {
+  return {
+    type: actionTypes.CHANGE_ADDCHAR_NAME,
+    name: charName
+  };
+};
+
+export const changeAddCharSpeed = charSpeed => {
+  return {
+    type: actionTypes.CHANGE_ADDCHAR_SPEED,
+    speed: charSpeed
+  };
+};
+
+export const changeAddCharInit = charInit => {
+  return {
+    type: actionTypes.CHANGE_ADDCHAR_INIT,
+    init: charInit
   };
 };

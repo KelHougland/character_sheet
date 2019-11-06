@@ -6,44 +6,10 @@ import * as actionCreators from "../../store/actions/index";
 import Initiative from "./../Initiative/Initiative";
 
 class Home extends Component {
-  state = {
-    newChar: {
-      name: "name",
-      speed: "speed",
-      initiative: "initiative",
-      type: "PC"
-    }
-  };
-
-  changeNameHandler = event => {
-    let changedChar = {
-      name: event.target.value,
-      speed: this.state.newChar.speed,
-      initiative: this.state.newChar.initiative
-    };
-    this.setState({ newChar: changedChar });
-  };
-
-  changeSpeedHandler = event => {
-    let changedChar = {
-      name: this.state.newChar.name,
-      speed: event.target.value,
-      initiative: this.state.newChar.initiative
-    };
-    this.setState({ newChar: changedChar });
-  };
-
-  changeInitHandler = event => {
-    let changedChar = {
-      name: this.state.newChar.name,
-      speed: this.state.newChar.speed,
-      initiative: event.target.value
-    };
-    this.setState({ newChar: changedChar });
-  };
-
   render() {
-    let charNames = this.props.chars.map(char => char.name.toLowerCase());
+    let charNames = this.props.charsInCombat.map(char =>
+      char.name.toLowerCase()
+    );
     charNames.push("");
     charNames.push("name");
     charNames.push("round");
@@ -51,9 +17,9 @@ class Home extends Component {
     let disabledText =
       "Please valid name, speed, and initiative to add a character";
     if (
-      !charNames.includes(this.state.newChar.name.toLowerCase()) &&
-      !isNaN(this.state.newChar.speed) &&
-      !isNaN(this.state.newChar.initiative)
+      !charNames.includes(this.props.addCharacter.name.toLowerCase()) &&
+      !isNaN(this.props.addCharacter.speed) &&
+      !isNaN(this.props.addCharacter.initiative)
     ) {
       addDisabled = false;
       disabledText = null;
@@ -64,28 +30,34 @@ class Home extends Component {
           <Table.HeaderCell>
             <input
               type="text"
-              value={this.state.newChar.name}
-              onChange={this.changeNameHandler}
+              value={this.props.addCharacter.name}
+              onChange={event =>
+                this.props.changeAddCharName(event.target.value)
+              }
             ></input>
           </Table.HeaderCell>
           <Table.HeaderCell>
             <input
               type="text"
-              value={this.state.newChar.speed}
-              onChange={this.changeSpeedHandler}
+              value={this.props.addCharacter.speed}
+              onChange={event =>
+                this.props.changeAddCharSpeed(event.target.value)
+              }
             ></input>
           </Table.HeaderCell>
           <Table.HeaderCell>
             <input
               type="text"
-              value={this.state.newChar.initiative}
-              onChange={this.changeInitHandler}
+              value={this.props.addCharacter.initiative}
+              onChange={event =>
+                this.props.changeAddCharInit(event.target.value)
+              }
             ></input>
           </Table.HeaderCell>
           <Table.HeaderCell>0</Table.HeaderCell>
           <Table.HeaderCell>
             <Button
-              onClick={() => this.props.addChar(this.state.newChar)}
+              onClick={() => this.props.addChar(this.props.addCharacter)}
               disabled={addDisabled}
             >
               +
@@ -105,14 +77,20 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    chars: state.charactersInCombat,
-    view: state.view
+    charsInCombat: state.charactersInCombat,
+    addCharacter: state.addChar
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addChar: character => dispatch(actionCreators.addChar(character))
+    addChar: character => dispatch(actionCreators.addChar(character)),
+    changeAddCharName: newName =>
+      dispatch(actionCreators.changeAddCharName(newName)),
+    changeAddCharSpeed: newSpeed =>
+      dispatch(actionCreators.changeAddCharSpeed(newSpeed)),
+    changeAddCharInit: newInit =>
+      dispatch(actionCreators.changeAddCharInit(newInit))
   };
 };
 
