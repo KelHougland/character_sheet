@@ -1,30 +1,30 @@
 import React from "react";
 
-import { Button, Table } from "semantic-ui-react";
+import { Button, Table, Input } from "semantic-ui-react";
 
 const addCharForm = props => (
   <Table.Footer>
     <Table.Row>
       <Table.HeaderCell>
-        <input
+        <Input
           type="text"
           value={props.charName}
           onChange={event => props.changeName(event.target.value)}
-        ></input>
+        ></Input>
       </Table.HeaderCell>
       <Table.HeaderCell>
-        <input
+        <Input
           type="text"
           value={props.charSpeed}
           onChange={event => props.changeSpeed(event.target.value)}
-        ></input>
+        ></Input>
       </Table.HeaderCell>
       <Table.HeaderCell>
-        <input
+        <Input
           type="text"
           value={props.charInit}
           onChange={event => props.changeInit(event.target.value)}
-        ></input>
+        ></Input>
       </Table.HeaderCell>
       <Table.HeaderCell>0</Table.HeaderCell>
       <Table.HeaderCell>
