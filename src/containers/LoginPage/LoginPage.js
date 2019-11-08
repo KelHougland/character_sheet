@@ -8,16 +8,23 @@ import * as actionCreators from "../../store/actions/index";
 
 class LoginPage extends Component {
   state = { view: "initial" };
+
   signUpHandler = () => {
     this.setState({ view: "signUp" });
   };
+
   signInHandler = () => {
     this.setState({ view: "signIn" });
   };
+
+  termsHandler = () => {
+    alert("Just don't be a dick.");
+  };
+
   render() {
     let formView = <div></div>;
     if (this.state.view === "signUp") {
-      formView = <SignUpForm />;
+      formView = <SignUpForm terms={this.termsHandler} />;
     } else if (this.state.view === "signIn") {
       formView = <SignInForm />;
     }
