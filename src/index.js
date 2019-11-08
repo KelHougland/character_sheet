@@ -2,17 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, combineReducers } from "redux";
 import "semantic-ui-css/semantic.min.css";
 
 import * as serviceWorker from "./serviceWorker";
 
 import App from "./App";
-import reducer from "./store/reducer/turnOrder";
+import combatReducer from "./store/reducer/turnOrder";
+import loginReducer from "./store/reducer/login";
 
 import "./index.css";
 
-const store = createStore(reducer);
+const rootReducer = combineReducers({
+  cmbt: combatReducer,
+  lgn: loginReducer
+});
+
+const store = createStore(rootReducer);
 
 const app = (
   <Provider store={store}>
