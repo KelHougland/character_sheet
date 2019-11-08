@@ -60,6 +60,8 @@ class Initiative extends Component {
 
         <br />
         {disabledText}
+        <br />
+        <a href="/">Return to Home</a>
       </div>
     );
   }

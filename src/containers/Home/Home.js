@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Table, Button } from "semantic-ui-react";
-
-import * as actionCreators from "../../store/actions/index";
-import Initiative from "./../Initiative/Initiative";
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <Initiative />
+        <a href="/CombatTracker">Initiate a Combat</a>
       </div>
     );
   }
