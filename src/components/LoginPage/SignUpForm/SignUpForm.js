@@ -9,6 +9,10 @@ const signUpForm = props => {
         <Input type="email" placeholder="Email" />
       </Form.Field>
       <Form.Field>
+        <label>Confirm Email:</label>
+        <Input type="email" placeholder="Confirm Email" />
+      </Form.Field>
+      <Form.Field>
         <label>Username:</label>
         <Input type="text" placeholder="Last Name" />
       </Form.Field>
