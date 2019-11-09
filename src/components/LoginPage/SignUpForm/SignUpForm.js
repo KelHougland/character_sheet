@@ -21,6 +21,10 @@ const signUpForm = props => {
         <Input type="password" placeholder="Password" />
       </Form.Field>
       <Form.Field>
+        <label>Confirm Password:</label>
+        <Input type="password" placeholder="Confirm Password" />
+      </Form.Field>
+      <Form.Field>
         <label onClick={props.terms}>I accept the terms and conditions:</label>
         <Checkbox />
       </Form.Field>
