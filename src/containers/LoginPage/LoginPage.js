@@ -11,10 +11,19 @@ class LoginPage extends Component {
     alert("Just don't be a dick.");
   };
 
+  validateEmail = () => {
+    const test1= "knhougland"
+    const test2= "knhougland@gmail.com"
+    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+    if (emailRegex.test(test1)) { console.log('this should not return anything')}
+    if (emailRegex.test(test2)) { console.log('this should return anything')}
+  }
+
   render() {
     let formView = <div></div>;
+    let unsubmittable = false
     if (this.props.view === "signUp") {
-      formView = <SignUpForm terms={this.termsHandler} />;
+      formView = <SignUpForm terms={this.termsHandler} noSubmit={unsubmittable} propsToPass={this.props}/>;
     } else if (this.props.view === "signIn") {
       formView = <SignInForm />;
     }
@@ -45,6 +54,11 @@ const mapDispatchToProps = dispatch => {
   return {
     changeView: newView =>
     dispatch(actionCreators.changeView(newView)),
+    changeEmail: newEmail => dispatch(actionCreators.changeEmail(newEmail)),
+    changeEmailConfirm: emailConfirm => dispatch(actionCreators.changeEmailConfirm(emailConfirm)),
+    changeUserName: userName => dispatch(actionCreators.changeUserName(userName)),
+    changePassword: password => dispatch(actionCreators.changePassword(password)),
+    changePasswordConfirm: passwordConfirm => dispatch(actionCreators.changePswdConfirm(passwordConfirm))
   };
 };
 
