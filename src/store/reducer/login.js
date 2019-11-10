@@ -15,7 +15,6 @@ const reducer = (state = initialState, action) => {
     case actionTypes.CHANGE_VIEW:
       return updateObject(state, { view: action.view });
     case actionTypes.CHANGE_EMAIL:
-      console.log(state)
       return updateObject(state, { email: action.email });
     case actionTypes.CHANGE_EMAILCONFIRM:
       return updateObject(state, { emailConfirm: action.emailConfirm });
