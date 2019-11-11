@@ -26,9 +26,7 @@ class LoginPage extends Component {
   validateEmailLogin = () => {
     let validEmailLogin = false;
     const emailRegex = RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
-    if (
-      emailRegex.test(this.props.userEmail)
-    ) {
+    if (emailRegex.test(this.props.userEmail)) {
       validEmailLogin = true;
     }
     return validEmailLogin;
@@ -55,9 +53,7 @@ class LoginPage extends Component {
 
   validatePasswordLogin = () => {
     let validPasswordLogin = false;
-    if (
-      this.props.userPswd.length > 8
-    ) {
+    if (this.props.userPswd.length > 8) {
       validPasswordLogin = true;
     }
     return validPasswordLogin;
@@ -88,9 +84,9 @@ class LoginPage extends Component {
       unsubmittable = true;
     }
 
-    let notLoginAble = true
+    let notLoginAble = true;
     if (this.validateEmailLogin() && this.validatePasswordLogin()) {
-      notLoginAble = false
+      notLoginAble = false;
     }
 
     if (this.props.view === "signUp") {
@@ -102,7 +98,7 @@ class LoginPage extends Component {
         />
       );
     } else if (this.props.view === "signIn") {
-      formView = <SignInForm propsToPass={this.props} noLogin={notLoginAble}/>;
+      formView = <SignInForm propsToPass={this.props} noLogin={notLoginAble} />;
     }
 
     return (
@@ -138,7 +134,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.changePassword(password)),
     changePasswordConfirm: passwordConfirm =>
       dispatch(actionCreators.changePswdConfirm(passwordConfirm)),
-    acceptTerms: () => dispatch(actionCreators.acceptTerms())
+    acceptTerms: () => dispatch(actionCreators.acceptTerms()),
+    createUser: newUser => dispatch(actionCreators.createUser(newUser))
   };
 };
 

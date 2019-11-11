@@ -28,7 +28,7 @@ const signUpForm = props => {
         <label>Username:</label>
         <Input
           type="text"
-          placeholder="Last Name"
+          placeholder="Username"
           onChange={event =>
             props.propsToPass.changeUserName(event.target.value)
           }
@@ -67,7 +67,12 @@ const signUpForm = props => {
       <Button
         type="submit"
         disabled={props.noSubmit}
-        onClick={props.submitAction}
+        onClick={() =>
+          props.propsToPass.createUser({
+            email: props.propsToPass.userEmail,
+            password: props.propsToPass.userPswd
+          })
+        }
       >
         Submit
       </Button>

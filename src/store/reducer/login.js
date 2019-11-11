@@ -1,3 +1,6 @@
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
@@ -25,8 +28,18 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { password: action.password });
     case actionTypes.CHANGE_PSWDCONFIRM:
       return updateObject(state, { passwordConfirm: action.pswdConfirm });
-      case actionTypes.ACCEPT_TERMS:
-        return updateObject(state, { accepted: !state.accepted });
+    case actionTypes.ACCEPT_TERMS:
+      return updateObject(state, { accepted: !state.accepted });
+    case actionTypes.CREATE_USER:
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(action.user.email, action.user.password)
+        .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+        });
     default:
       return state;
   }
