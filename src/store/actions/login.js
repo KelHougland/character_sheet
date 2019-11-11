@@ -31,3 +31,7 @@ export const acceptTerms = () => {
 export const createUser = () => {
   return { type: actionTypes.CREATE_USER };
 };
+
+export const loginUser = () => {
+  return { type: actionTypes.LOGIN_USER };
+};

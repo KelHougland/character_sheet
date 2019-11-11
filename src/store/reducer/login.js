@@ -38,7 +38,18 @@ const reducer = (state = initialState, action) => {
           var errorCode = error.code;
           var errorMessage = error.message;
           console.log(errorCode);
-          console.log(errorMessage);
+          alert(errorMessage);
+        });
+      return state;
+    case actionTypes.LOGIN_USER:
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(state.email, state.password)
+        .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode);
+          alert(errorMessage);
         });
       return state;
     default:

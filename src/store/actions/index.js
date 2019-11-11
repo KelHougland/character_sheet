@@ -21,5 +21,6 @@ export {
   changePassword,
   changePswdConfirm,
   acceptTerms,
-  createUser
+  createUser,
+  loginUser
 } from "./login.js";
