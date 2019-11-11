@@ -28,6 +28,6 @@ export const acceptTerms = () => {
   return { type: actionTypes.ACCEPT_TERMS };
 };
 
-export const createUser = newUser => {
-  return { type: actionTypes.CREATE_USER, user: newUser };
+export const createUser = () => {
+  return { type: actionTypes.CREATE_USER };
 };

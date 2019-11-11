@@ -43,74 +43,56 @@ const reducer = (state = initialState, action) => {
       }
       return updateObject(state, { charactersInCombat: charList });
     case actionTypes.SPEED_INCREMENT:
-      let incSpeedChars = [];
-      charList.map(char => {
+      let incSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          incSpeedChars.push(
-            updateObject(char, { speedBonus: char.speedBonus + 1 })
-          );
+          return updateObject(char, { speedBonus: char.speedBonus + 1 });
         } else {
-          incSpeedChars.push(char);
+          return char;
         }
       });
       return updateObject(state, { charactersInCombat: incSpeedChars });
     case actionTypes.SPEED_DECREMENT:
-      let deSpeedChars = [];
-      charList.map(char => {
+      let deSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          deSpeedChars.push(
-            updateObject(char, { speedBonus: char.speedBonus - 1 })
-          );
+          return updateObject(char, { speedBonus: char.speedBonus - 1 });
         } else {
-          deSpeedChars.push(char);
+          return char;
         }
       });
       return updateObject(state, { charactersInCombat: deSpeedChars });
     case actionTypes.INIT_INCREMENT1:
-      let inc1InitChars = [];
-      charList.map(char => {
+      let inc1InitChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          inc1InitChars.push(
-            updateObject(char, { initiative: char.initiative + 1 })
-          );
+          return updateObject(char, { initiative: char.initiative + 1 });
         } else {
-          inc1InitChars.push(char);
+          return char;
         }
       });
       return updateObject(state, { charactersInCombat: inc1InitChars });
     case actionTypes.INIT_DECREMENT1:
-      let de1InitChars = [];
-      charList.map(char => {
+      let de1InitChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          de1InitChars.push(
-            updateObject(char, { initiative: char.initiative - 1 })
-          );
+          return updateObject(char, { initiative: char.initiative - 1 });
         } else {
-          de1InitChars.push(char);
+          return char;
         }
       });
       return updateObject(state, { charactersInCombat: de1InitChars });
     case actionTypes.INIT_INCREMENT5:
-      let inc5InitChars = [];
-      charList.map(char => {
+      let inc5InitChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          inc5InitChars.push(
-            updateObject(char, { initiative: char.initiative + 5 })
-          );
+          return updateObject(char, { initiative: char.initiative + 5 });
         } else {
-          inc5InitChars.push(char);
+          return char;
         }
       });
       return updateObject(state, { charactersInCombat: inc5InitChars });
     case actionTypes.INIT_DECREMENT5:
-      let de5InitChars = [];
-      charList.map(char => {
+      let de5InitChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          de5InitChars.push(
-            updateObject(char, { initiative: char.initiative - 5 })
-          );
+          return updateObject(char, { initiative: char.initiative - 5 });
         } else {
-          de5InitChars.push(char);
+          return char;
         }
       });
       return updateObject(state, { charactersInCombat: de5InitChars });

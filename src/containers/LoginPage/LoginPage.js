@@ -135,7 +135,7 @@ const mapDispatchToProps = dispatch => {
     changePasswordConfirm: passwordConfirm =>
       dispatch(actionCreators.changePswdConfirm(passwordConfirm)),
     acceptTerms: () => dispatch(actionCreators.acceptTerms()),
-    createUser: newUser => dispatch(actionCreators.createUser(newUser))
+    createUser: () => dispatch(actionCreators.createUser())
   };
 };
 

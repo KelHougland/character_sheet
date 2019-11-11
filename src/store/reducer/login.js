@@ -33,14 +33,14 @@ const reducer = (state = initialState, action) => {
     case actionTypes.CREATE_USER:
       firebase
         .auth()
-        .createUserWithEmailAndPassword(action.user.email, action.user.password)
+        .createUserWithEmailAndPassword(state.email, state.password)
         .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
           console.log(errorCode);
           console.log(errorMessage);
         });
-      break;
+      return state;
     default:
       return state;
   }
