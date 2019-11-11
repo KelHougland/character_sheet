@@ -40,6 +40,7 @@ const reducer = (state = initialState, action) => {
           console.log(errorCode);
           console.log(errorMessage);
         });
+      break;
     default:
       return state;
   }

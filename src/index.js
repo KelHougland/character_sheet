@@ -3,15 +3,23 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { createStore, combineReducers } from "redux";
-import "semantic-ui-css/semantic.min.css";
+import firebase from "firebase/app";
 
 import * as serviceWorker from "./serviceWorker";
+
+import "semantic-ui-css/semantic.min.css";
 
 import App from "./App";
 import combatReducer from "./store/reducer/turnOrder";
 import loginReducer from "./store/reducer/login";
 
 import "./index.css";
+
+const config = JSON.parse(process.env.firebaseConfig);
+
+console.log(config);
+
+firebase.initializeApp(config);
 
 const rootReducer = combineReducers({
   cmbt: combatReducer,
