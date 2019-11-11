@@ -28,7 +28,7 @@ const signUpForm = props => {
         <label onClick={props.terms}>I accept the terms and conditions:</label>
         <Checkbox />
       </Form.Field>
-      <Button type="submit" disabled={props.noSubmit} onClick={props.onSubmit}>Submit</Button>
+      <Button type="submit" disabled={props.noSubmit} onClick={props.submitAction}>Submit</Button>
     </Form>
   );
 };

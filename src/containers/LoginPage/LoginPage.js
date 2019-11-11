@@ -12,18 +12,28 @@ class LoginPage extends Component {
   };
 
   validateEmail = () => {
-    const test1= "knhougland"
-    const test2= "knhougland@gmail.com"
-    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    if (emailRegex.test(test1)) { console.log('this should not return anything')}
-    if (emailRegex.test(test2)) { console.log('this should return anything')}
-  }
+    let validEmail = false
+    const emailRegex = RegExp(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
+     if (emailRegex.test(this.props.userEmail) && (this.props.userEmail === this.props.emailConfirm)) {validEmail = true}
+     return validEmail
+  };
 
   render() {
     let formView = <div></div>;
-    let unsubmittable = false
+    let unsubmittable = true;
+    if (this.validateEmail()) {
+      unsubmittable = false;
+    } else {
+      unsubmittable = true;
+    }
     if (this.props.view === "signUp") {
-      formView = <SignUpForm terms={this.termsHandler} noSubmit={unsubmittable} propsToPass={this.props}/>;
+      formView = (
+        <SignUpForm
+          terms={this.termsHandler}
+          noSubmit={unsubmittable}
+          propsToPass={this.props}
+        />
+      );
     } else if (this.props.view === "signIn") {
       formView = <SignInForm />;
     }
@@ -31,7 +41,10 @@ class LoginPage extends Component {
     return (
       <div>
         <Button onClick={() => this.props.changeView("signIn")}>Sign in</Button>{" "}
-        <Button onClick={() => this.props.changeView("signUp")}> Sign up</Button>
+        <Button onClick={() => this.props.changeView("signUp")}>
+          {" "}
+          Sign up
+        </Button>
         <a href="/Home">Go to Home Page</a>
         {formView}
       </div>
@@ -52,13 +65,16 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeView: newView =>
-    dispatch(actionCreators.changeView(newView)),
+    changeView: newView => dispatch(actionCreators.changeView(newView)),
     changeEmail: newEmail => dispatch(actionCreators.changeEmail(newEmail)),
-    changeEmailConfirm: emailConfirm => dispatch(actionCreators.changeEmailConfirm(emailConfirm)),
-    changeUserName: userName => dispatch(actionCreators.changeUserName(userName)),
-    changePassword: password => dispatch(actionCreators.changePassword(password)),
-    changePasswordConfirm: passwordConfirm => dispatch(actionCreators.changePswdConfirm(passwordConfirm))
+    changeEmailConfirm: emailConfirm =>
+      dispatch(actionCreators.changeEmailConfirm(emailConfirm)),
+    changeUserName: userName =>
+      dispatch(actionCreators.changeUserName(userName)),
+    changePassword: password =>
+      dispatch(actionCreators.changePassword(password)),
+    changePasswordConfirm: passwordConfirm =>
+      dispatch(actionCreators.changePswdConfirm(passwordConfirm))
   };
 };
 
