@@ -18,10 +18,26 @@ class LoginPage extends Component {
      return validEmail
   };
 
+  validateUserName = () => {
+    let validName = false
+    if (this.props.userName.length > 6 ) {
+      validName = true
+    }
+    return validName
+  }
+
+  validatePassword = () => {
+    let validPassword = false
+    if ((this.props.userPswd === this.props.pswdConfirm) && (this.props.userPswd.length > 8)) {
+      validPassword = true
+    }
+    return validPassword
+  }
+
   render() {
     let formView = <div></div>;
     let unsubmittable = true;
-    if (this.validateEmail()) {
+    if (this.validateEmail() && this.validateUserName() && this.validatePassword()) {
       unsubmittable = false;
     } else {
       unsubmittable = true;
@@ -57,7 +73,7 @@ const mapStateToProps = state => {
     userEmail: state.lgn.email,
     emailConfirm: state.lgn.emailConfirm,
     userPswd: state.lgn.password,
-    pswdConfrim: state.lgn.passwordConfirm,
+    pswdConfirm: state.lgn.passwordConfirm,
     userName: state.lgn.userName,
     view: state.lgn.view
   };
