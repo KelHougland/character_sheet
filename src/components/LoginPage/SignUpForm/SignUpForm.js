@@ -67,12 +67,7 @@ const signUpForm = props => {
       <Button
         type="submit"
         disabled={props.noSubmit}
-        onClick={() =>
-          props.propsToPass.createUser({
-            email: props.propsToPass.userEmail,
-            password: props.propsToPass.userPswd
-          })
-        }
+        onClick={() => props.propsToPass.createUser({})}
       >
         Submit
       </Button>
