@@ -12,12 +12,9 @@ import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import combatReducer from "./store/reducer/turnOrder";
 import loginReducer from "./store/reducer/login";
+import config from "./firebase";
 
 import "./index.css";
-
-const config = JSON.parse(process.env.firebaseConfig);
-
-console.log(config);
 
 firebase.initializeApp(config);
 
