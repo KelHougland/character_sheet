@@ -7,7 +7,8 @@ const initialState = {
   password: "",
   passwordConfirm: "",
   userName: "",
-  view: "initial"
+  view: "initial",
+  accepted: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,8 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { password: action.password });
     case actionTypes.CHANGE_PSWDCONFIRM:
       return updateObject(state, { passwordConfirm: action.pswdConfirm });
+      case actionTypes.ACCEPT_TERMS:
+        return updateObject(state, { accepted: !state.accepted });
     default:
       return state;
   }

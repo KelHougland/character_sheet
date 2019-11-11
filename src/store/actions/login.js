@@ -23,3 +23,7 @@ export const changeEmail = (newEmail) => {
   export const changePswdConfirm = (newPConfirm) => {
     return { type: actionTypes.CHANGE_PSWDCONFIRM, pswdConfirm: newPConfirm};
   };
+
+  export const acceptTerms = () => {
+    return { type: actionTypes.ACCEPT_TERMS};
+  };

@@ -13,4 +13,4 @@ export {
   changeAddCharSpeed
 } from "./initiative.js";
 
-export {changeView, changeEmail, changeEmailConfirm, changeUserName, changePassword, changePswdConfirm} from "./login.js"
+export {changeView, changeEmail, changeEmailConfirm, changeUserName, changePassword, changePswdConfirm, acceptTerms} from "./login.js"
