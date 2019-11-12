@@ -12,15 +12,20 @@ import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import combatReducer from "./store/reducer/turnOrder";
 import loginReducer from "./store/reducer/login";
+import accountReducer from "./store/reducer/account"
 import config from "./firebase";
 
 import "./index.css";
+
+// ADD SIGN-OUT, PASSWORD RESET, PASSWORD CHANGE //
+
 
 firebase.initializeApp(config);
 
 const rootReducer = combineReducers({
   cmbt: combatReducer,
-  lgn: loginReducer
+  lgn: loginReducer,
+  acct: accountReducer
 });
 
 const store = createStore(rootReducer);

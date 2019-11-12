@@ -40,11 +40,32 @@ const reducer = (state = initialState, action) => {
           console.log(errorCode);
           alert(errorMessage);
         });
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(state.email, state.password)
+        .then(authUser => {
+          updateObject(state,  {  email: "",
+          emailConfirm: "",
+          password: "",
+          passwordConfirm: ""});
+        })
+        .catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode);
+          alert(errorMessage);
+        });
       return state;
     case actionTypes.LOGIN_USER:
       firebase
         .auth()
         .signInWithEmailAndPassword(state.email, state.password)
+        .then(authUser => {
+          updateObject(state, {  email: "",
+          emailConfirm: "",
+          password: "",
+          passwordConfirm: ""});
+        })
         .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;

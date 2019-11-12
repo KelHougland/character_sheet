@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import LoginPage from "./containers/LoginPage/LoginPage";
@@ -19,4 +20,21 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    authorizedUser: state.acct.authorizedUser
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    authUser: () => dispatch(actionCreators.authUser()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+

@@ -24,3 +24,7 @@ export {
   createUser,
   loginUser
 } from "./login.js";
+
+export {
+  authUser
+} from "./account.js"

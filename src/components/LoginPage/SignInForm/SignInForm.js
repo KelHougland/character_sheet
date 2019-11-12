@@ -23,11 +23,10 @@ const signInForm = props => {
         />
       </Form.Field>
       <Button
-        type="submit"
         disabled={props.noLogin}
         onClick={() => props.propsToPass.loginUser()}
       >
-        Submit
+        Login
       </Button>
     </Form>
   );

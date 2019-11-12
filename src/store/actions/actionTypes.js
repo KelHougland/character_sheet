@@ -39,3 +39,5 @@ export const ACCEPT_TERMS = "ACCEPT_TERMS";
 export const CREATE_USER = "CREATE_USER";
 
 export const LOGIN_USER = "LOGIN_USER";
+
+export const AUTH_USER = "AUTH_USER"

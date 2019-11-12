@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
+import {Redirect} from 'react-router-dom'
 import SignUpForm from "../../components/LoginPage/SignUpForm/SignUpForm";
 import SignInForm from "../../components/LoginPage/SignInForm/SignInForm";
 
@@ -72,6 +73,7 @@ class LoginPage extends Component {
         </Button>
       </div>
     );
+
     let unsubmittable = true;
     if (
       this.validateEmail() &&
@@ -89,6 +91,9 @@ class LoginPage extends Component {
       notLoginAble = false;
     }
 
+    if (this.props.authUser) {
+      formView = <Redirect to="/Home"/>
+    }
     if (this.props.view === "signUp") {
       formView = (
         <SignUpForm
@@ -103,7 +108,6 @@ class LoginPage extends Component {
 
     return (
       <div>
-        <a href="/Home">Go to Home Page</a>
         {formView}
       </div>
     );

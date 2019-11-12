@@ -65,11 +65,10 @@ const signUpForm = props => {
         </p>
       </Form.Field>
       <Button
-        type="submit"
         disabled={props.noSubmit}
         onClick={() => props.propsToPass.createUser({})}
       >
-        Submit
+        Create Account
       </Button>
     </Form>
   );
