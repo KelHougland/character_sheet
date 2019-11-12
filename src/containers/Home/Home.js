@@ -13,8 +13,9 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    charsInCombat: state.charactersInCombat,
-    addCharacter: state.addChar
+    charsInCombat: state.cmbt.charactersInCombat,
+    addCharacter: state.cmbt.addChar,
+    authorizedUser: state.acct.authorizedUser
   };
 };
 

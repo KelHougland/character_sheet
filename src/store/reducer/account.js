@@ -9,7 +9,17 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case actionTypes.AUTH_USER:
+      firebase.auth().onAuthStateChanged(authUser => {
+        authUser
+          ? updateObject(state, { authorizedUser: authUser })
+          : updateObject(state, { authorizedUser: null });
+      });
+      return state;
+    default:
+      return state;
+  }
 };
 
 export default reducer;

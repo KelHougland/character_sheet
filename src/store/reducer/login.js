@@ -44,10 +44,7 @@ const reducer = (state = initialState, action) => {
         .auth()
         .signInWithEmailAndPassword(state.email, state.password)
         .then(authUser => {
-          updateObject(state,  {  email: "",
-          emailConfirm: "",
-          password: "",
-          passwordConfirm: ""});
+          updateObject(state,  {  password: "", passwordConfirm: ""});
         })
         .catch(function(error) {
           var errorCode = error.code;
@@ -61,10 +58,7 @@ const reducer = (state = initialState, action) => {
         .auth()
         .signInWithEmailAndPassword(state.email, state.password)
         .then(authUser => {
-          updateObject(state, {  email: "",
-          emailConfirm: "",
-          password: "",
-          passwordConfirm: ""});
+          updateObject(state, {  password: "", passwordConfirm: ""});
         })
         .catch(function(error) {
           var errorCode = error.code;

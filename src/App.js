@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import LoginPage from "./containers/LoginPage/LoginPage";
@@ -8,7 +7,9 @@ import Initiative from "./containers/Initiative/Initiative";
 
 import "./App.css";
 
+
 function App() {
+
   return (
     <div className="App">
       <Switch>
@@ -20,21 +21,4 @@ function App() {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    authorizedUser: state.acct.authorizedUser
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    authUser: () => dispatch(actionCreators.authUser()),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
-
-
+export default App;
