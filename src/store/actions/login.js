@@ -27,11 +27,3 @@ export const changePswdConfirm = newPConfirm => {
 export const acceptTerms = () => {
   return { type: actionTypes.ACCEPT_TERMS };
 };
-
-export const createUser = () => {
-  return { type: actionTypes.CREATE_USER };
-};
-
-export const loginUser = () => {
-  return { type: actionTypes.LOGIN_USER };
-};

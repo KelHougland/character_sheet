@@ -30,43 +30,6 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { passwordConfirm: action.pswdConfirm });
     case actionTypes.ACCEPT_TERMS:
       return updateObject(state, { accepted: !state.accepted });
-    case actionTypes.CREATE_USER:
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(state.email, state.password)
-        .catch(function(error) {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorCode);
-          alert(errorMessage);
-        });
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(state.email, state.password)
-        .then(authUser => {
-          updateObject(state,  {  password: "", passwordConfirm: ""});
-        })
-        .catch(function(error) {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorCode);
-          alert(errorMessage);
-        });
-      return state;
-    case actionTypes.LOGIN_USER:
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(state.email, state.password)
-        .then(authUser => {
-          updateObject(state, {  password: "", passwordConfirm: ""});
-        })
-        .catch(function(error) {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorCode);
-          alert(errorMessage);
-        });
-      return state;
     default:
       return state;
   }

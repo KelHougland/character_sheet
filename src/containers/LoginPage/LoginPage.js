@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 import SignUpForm from "../../components/LoginPage/SignUpForm/SignUpForm";
 import SignInForm from "../../components/LoginPage/SignInForm/SignInForm";
 
@@ -92,7 +92,7 @@ class LoginPage extends Component {
     }
 
     if (this.props.authUser) {
-      formView = <Redirect to="/Home"/>
+      formView = <Redirect to="/Home" />;
     }
     if (this.props.view === "signUp") {
       formView = (
@@ -106,11 +106,7 @@ class LoginPage extends Component {
       formView = <SignInForm propsToPass={this.props} noLogin={notLoginAble} />;
     }
 
-    return (
-      <div>
-        {formView}
-      </div>
-    );
+    return <div>{formView}</div>;
   }
 }
 
@@ -138,13 +134,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.changePassword(password)),
     changePasswordConfirm: passwordConfirm =>
       dispatch(actionCreators.changePswdConfirm(passwordConfirm)),
-    acceptTerms: () => dispatch(actionCreators.acceptTerms()),
-    createUser: () => dispatch(actionCreators.createUser()),
-    loginUser: () => dispatch(actionCreators.loginUser())
+    acceptTerms: () => dispatch(actionCreators.acceptTerms())
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

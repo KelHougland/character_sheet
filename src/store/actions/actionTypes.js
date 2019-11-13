@@ -36,8 +36,8 @@ export const CHANGE_PSWDCONFIRM = "CHANGE_PSWDCONFIRM";
 
 export const ACCEPT_TERMS = "ACCEPT_TERMS";
 
-export const CREATE_USER = "CREATE_USER";
+export const AUTH_START = "AUTH_START";
 
-export const LOGIN_USER = "LOGIN_USER";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
 
-export const AUTH_USER = "AUTH_USER"
+export const AUTH_FAIL = "AUTH_FAIL";

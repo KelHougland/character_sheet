@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import firebase from "firebase/app";
+import thunk from "redux-thunk";
 
 import * as serviceWorker from "./serviceWorker";
 
@@ -12,23 +13,20 @@ import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import combatReducer from "./store/reducer/turnOrder";
 import loginReducer from "./store/reducer/login";
-import accountReducer from "./store/reducer/account"
 import config from "./firebase";
 
 import "./index.css";
 
 // ADD SIGN-OUT, PASSWORD RESET, PASSWORD CHANGE //
 
-
 firebase.initializeApp(config);
 
 const rootReducer = combineReducers({
   cmbt: combatReducer,
-  lgn: loginReducer,
-  acct: accountReducer
+  lgn: loginReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const app = (
   <Provider store={store}>

@@ -20,11 +20,5 @@ export {
   changeUserName,
   changePassword,
   changePswdConfirm,
-  acceptTerms,
-  createUser,
-  loginUser
+  acceptTerms
 } from "./login.js";
-
-export {
-  authUser
-} from "./account.js"
