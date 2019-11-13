@@ -14,23 +14,26 @@ export const authFail = error => {
   return { type: actionTypes.AUTH_FAIL, error: error };
 };
 
-export const auth = {email, password} => {
-    return dispatch => {
-        dispatch(authStart());
-        const authData = {
-            email: email,
-            password: password,
-            returnSecureToken: true
-        }
-        axios.post(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCdIOHHy-O8g9M3e2tkwhIpr9OliPoipL0",
-            authData
-          ).then(response => {
-              console.log(response);
-              dispatch(authSuccess(response.data))
-          }).catch(err => {
-              console.log(err);
-              dispatch(authFail(err))
-          })
-    }
-}
+export const auth = (email, password) => {
+  return dispatch => {
+    dispatch(authStart());
+    const authData = {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    };
+    axios
+      .post(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCdIOHHy-O8g9M3e2tkwhIpr9OliPoipL0",
+        authData
+      )
+      .then(response => {
+        console.log(response);
+        dispatch(authSuccess(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(authFail(err));
+      });
+  };
+};

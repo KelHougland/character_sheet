@@ -22,3 +22,5 @@ export {
   changePswdConfirm,
   acceptTerms
 } from "./login.js";
+
+export { auth } from "./account.js";
