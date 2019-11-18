@@ -91,9 +91,7 @@ class LoginPage extends Component {
       notLoginAble = false;
     }
 
-    if (this.props.authUser) {
-      formView = <Redirect to="/Home" />;
-    }
+
     if (this.props.view === "signUp") {
       formView = (
         <SignUpForm
