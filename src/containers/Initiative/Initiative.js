@@ -7,6 +7,8 @@ import * as actionCreators from "../../store/actions/index";
 import AddCharForm from "../../components/InitiativeTracker/AddCharInit/AddCharInit";
 import TableContent from "../../components/InitiativeTracker/TableContent/TableContent";
 
+import './Initiative.css'
+
 class Initiative extends Component {
   render() {
     let charNames = this.props.charsInCombat.map(char =>
@@ -27,8 +29,8 @@ class Initiative extends Component {
       disabledText = null;
     }
     return (
-      <div>
-        <Table celled>
+      <div className='tableDiv'>
+        <Table celled collapsing unstackable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Name</Table.HeaderCell>

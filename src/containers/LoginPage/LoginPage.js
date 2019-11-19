@@ -104,7 +104,7 @@ class LoginPage extends Component {
       formView = <SignInForm propsToPass={this.props} noLogin={notLoginAble} />;
     }
 
-    return <div>{formView}</div>;
+    return <div>{formView}       <a href="/CombatTracker">Initiate a Combat</a></div>;
   }
 }
 
