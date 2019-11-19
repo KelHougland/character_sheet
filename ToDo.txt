@@ -1,0 +1,4 @@
+- stop rearranging the table, add sidebar list
+    - make it so table is in alphabetical order
+
+- change form validation to be in login page handler
