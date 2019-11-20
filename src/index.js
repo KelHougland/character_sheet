@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import firebase from "firebase/app";
 import thunk from "redux-thunk";
@@ -30,9 +29,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </Provider>
 );
 
