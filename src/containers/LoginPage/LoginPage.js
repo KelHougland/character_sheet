@@ -106,6 +106,15 @@ class LoginPage extends Component {
     return isValid;
   }
 
+  submitHandler = event => {
+    event.preventDefault();
+    this.props.onAuth(
+      this.state.controls.email.value,
+      this.state.controls.password.value,
+      this.state.view
+    );
+  };
+
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
       ...this.state.controls,
@@ -160,7 +169,7 @@ class LoginPage extends Component {
         <Form.Field key={formElement.id}>
           <label>{formElement.config.elementConfig.placeholder}:</label>
           <Input
-            type={formElement.config.elementType}
+            type={formElement.config.elementConfig.type}
             value={formElement.config.value}
             placeholder={formElement.config.elementConfig.placeholder}
             onChange={event => this.inputChangedHandler(event, formElement.id)}
@@ -177,17 +186,41 @@ class LoginPage extends Component {
       <Button onClick={() => this.changeViewHandler("signUp")}> Sign up</Button>
     );
 
+    let noLogin = true;
+    if (this.state.controls.email.valid && this.state.controls.password.valid) {
+      noLogin = false;
+    }
+
+    let noSubmit = true;
+    if (
+      this.state.controls.email.valid &&
+      this.state.controls.emailConfirm.valid &&
+      this.state.controls.userName.valid &&
+      this.state.controls.password.valid &&
+      this.state.controls.passwordConfirm.valid &&
+      this.state.accepted
+    ) {
+      noSubmit = false;
+    }
+
     if (this.state.view === "signUp") {
       signUp = (
         <SignUpForm
           terms={this.termsHandler}
-          noSubmit={true}
+          noSubmit={noSubmit}
           body={formContent}
           onAccept={this.termsAcceptedHandler}
+          onSub={this.submitHandler}
         />
       );
     } else if (this.state.view === "signIn") {
-      signIn = <SignInForm body={formContent} noLogin={true} />;
+      signIn = (
+        <SignInForm
+          body={formContent}
+          noLogin={noLogin}
+          onSub={this.submitHandler}
+        />
+      );
     }
 
     let formView = (
@@ -201,11 +234,14 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return { error: state.auth.error };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    onAuth: (email, password, view) =>
+      dispatch(actionCreators.auth(email, password, view))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

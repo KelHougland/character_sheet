@@ -24,14 +24,22 @@ export const checkAuthTimeout = expirationTime => {
 };
 
 export const logout = () => {
-    return {type: actionTypes.AUTH_LOGOUT}
-}
+  return { type: actionTypes.AUTH_LOGOUT };
+};
 
 export const auth = (email, password, view) => {
-    return dispatch => {
-        dispatch(authStart());
-      if (view === "signUp") {
-        
-      }
+  return dispatch => {
+    dispatch(authStart());
+    if (view === "signUp") {
+      firebase.auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(response => console.log(response))
+        .catch(error => console.log(error.message));
+    } else if (view === "signIn") {
+      firebase.auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(response => console.log(response))
+        .catch(error => console.log(error.message));
     }
-}
+  };
+};

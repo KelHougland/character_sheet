@@ -12,3 +12,6 @@ export {
   changeAddCharName,
   changeAddCharSpeed
 } from "./initiative.js";
+
+
+export {auth} from "./auth.js"

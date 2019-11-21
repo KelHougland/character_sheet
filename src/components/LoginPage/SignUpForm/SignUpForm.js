@@ -3,7 +3,7 @@ import { Button, Form, Checkbox } from "semantic-ui-react";
 
 const signUpForm = props => {
   return (
-    <Form>
+    <Form onSubmit={props.onSub}>
       {props.body}
       <Form.Field key="accept">
         <label>I have read and accept the terms and conditions:</label>

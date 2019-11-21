@@ -21,6 +21,7 @@ const initialState = {
   }
 };
 
+
 const reducer = (state = initialState, action) => {
   let charList = state.charactersInCombat;
   switch (action.type) {
