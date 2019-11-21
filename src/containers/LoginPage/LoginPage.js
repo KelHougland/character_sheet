@@ -14,7 +14,8 @@ class LoginPage extends Component {
         value: "",
         elementConfig: {
           type: "email",
-          placeholder: "Email Address"
+          placeholder: "Email Address",
+          restriction: "Valid Email Address"
         },
         validation: {
           required: true,
@@ -27,7 +28,8 @@ class LoginPage extends Component {
         value: "",
         elementConfig: {
           type: "email",
-          placeholder: "Confirm Email"
+          placeholder: "Confirm Email",
+          restriction: "Must Match Email Above"
         },
         validation: {
           required: true,
@@ -40,7 +42,8 @@ class LoginPage extends Component {
         value: "",
         elementConfig: {
           type: "text",
-          placeholder: "User Name"
+          placeholder: "User Name",
+          restriction: "Minimum 6 Characters Long"
         },
         validation: {
           required: true,
@@ -53,7 +56,8 @@ class LoginPage extends Component {
         value: "",
         elementConfig: {
           type: "password",
-          placeholder: "Password"
+          placeholder: "Password",
+          restriction: "Minimum 8 Characters Long"
         },
         validation: {
           required: true,
@@ -66,7 +70,8 @@ class LoginPage extends Component {
         value: "",
         elementConfig: {
           type: "password",
-          placeholder: "Confirm Password"
+          placeholder: "Confirm Password",
+          restriction: "Must Match Password Above"
         },
         validation: {
           required: true,
@@ -167,7 +172,7 @@ class LoginPage extends Component {
     let formContent = formElementsArray.map(formElement => {
       return (
         <Form.Field key={formElement.id}>
-          <label>{formElement.config.elementConfig.placeholder}:</label>
+          <label>{formElement.config.elementConfig.restriction}:</label>
           <Input
             type={formElement.config.elementConfig.type}
             value={formElement.config.value}
