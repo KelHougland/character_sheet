@@ -4,7 +4,7 @@ import { Button, Table } from "semantic-ui-react";
 
 const tableContent = props => {
   let charView = props.charList
-    .sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1))
+    //.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1))
     .map(character => (
       <Table.Row key={character.id}>
         <Table.Cell>{character.name}</Table.Cell>

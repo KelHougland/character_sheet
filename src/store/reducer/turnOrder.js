@@ -107,7 +107,13 @@ const reducer = (state = initialState, action) => {
         turnCount: 0
       };
       return updateObject(state, {
-        charactersInCombat: state.charactersInCombat.concat(newChar)
+        charactersInCombat: state.charactersInCombat.concat(newChar),
+        addChar: {
+          name: "name",
+          speed: "speed",
+          initiative: "initiative",
+          type: "PC"
+        }
       });
     case actionTypes.DEL_CHAR:
       const updatedChars = state.charactersInCombat.filter(

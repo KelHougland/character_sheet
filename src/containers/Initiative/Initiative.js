@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
+import _ from 'lodash'
 
 import * as actionCreators from "../../store/actions/index";
 
@@ -10,6 +11,39 @@ import TableContent from "../../components/InitiativeTracker/TableContent/TableC
 import './Initiative.css'
 
 class Initiative extends Component {
+  state = {
+    column: null,
+    direction: null
+  }
+  
+
+  sortHandler = (clickedColumn) => () => {
+    const column = this.state.column
+    const direction = this.state.direction
+    const data = this.props.charsInCombat
+
+
+    if (column !== clickedColumn) {
+      let newData = []
+      if (clickedColumn==='name'){
+        newData = this.props.charsInCombat.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1))
+      } else {newData = this.props.charsInCombat.sort((a, b) => (a[clickedColumn] < b[clickedColumn] ? -1 : 1))}
+      
+      this.setState({
+        column: clickedColumn,
+        data: newData,
+        direction: 'ascending',
+      })
+
+      return
+    }
+
+    this.setState({
+      data: data.reverse(),
+      direction: direction === 'ascending' ? 'descending' : 'ascending',
+    })
+  }
+
   render() {
     let charNames = this.props.charsInCombat.map(char =>
       char.name.toLowerCase()
@@ -28,15 +62,20 @@ class Initiative extends Component {
       addDisabled = false;
       disabledText = null;
     }
+
+    const column = this.state.column
+    const direction = this.state.direction
+    const data = this.props.charsInCombat
+
     return (
       <div className='tableDiv'>
-        <Table celled collapsing unstackable>
+        <Table celled collapsing unstackable sortable>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Speed</Table.HeaderCell>
-              <Table.HeaderCell>Initiative</Table.HeaderCell>
-              <Table.HeaderCell>Turns Taken</Table.HeaderCell>
+              <Table.HeaderCell sorted={column === "name" ? direction :null} onClick={this.sortHandler('name')}>Name</Table.HeaderCell>
+              <Table.HeaderCell sorted={column === "speed" ? direction :null} onClick={this.sortHandler('speed')} >Speed</Table.HeaderCell>
+              <Table.HeaderCell sorted={column === "initiative" ? direction :null} onClick={this.sortHandler('initiative')} >Initiative</Table.HeaderCell>
+              <Table.HeaderCell sorted={column === "turnCount" ? direction :null} onClick={this.sortHandler('turnCount')}  >Turns Taken</Table.HeaderCell>
               <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
