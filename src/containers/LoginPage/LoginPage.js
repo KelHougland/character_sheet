@@ -233,7 +233,7 @@ class LoginPage extends Component {
       <div>
         {formView}
         <h3>{this.props.error ? this.props.error : null}</h3>{" "}
-        <a href="/CombatTracker">Initiate a Combat</a>
+        <h1>Login to Access</h1>
       </div>
     );
   }

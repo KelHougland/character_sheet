@@ -13,5 +13,4 @@ export {
   changeAddCharSpeed
 } from "./initiative.js";
 
-
-export {auth} from "./auth.js"
+export { auth, authCheck, authSignout } from "./auth.js";

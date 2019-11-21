@@ -7,39 +7,61 @@ export const authStart = () => {
   return { type: actionTypes.AUTH_START };
 };
 
-export const authSuccess = (token, userId) => {
-  return { type: actionTypes.AUTH_SUCCESS, idToken: token, userId: userId };
+export const authSuccess = () => {
+  return { type: actionTypes.AUTH_SUCCESS };
 };
 
 export const authFail = error => {
   return { type: actionTypes.AUTH_FAIL, error: error };
 };
 
-export const checkAuthTimeout = expirationTime => {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(logout());
-    }, expirationTime * 1000);
-  };
+export const authCheck = () => dispatch => {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      dispatch({
+        type: actionTypes.AUTH_CHECK,
+        user: user
+      });
+    } else {
+      dispatch({
+        type: actionTypes.AUTH_CHECK,
+        user: null
+      });
+    }
+  });
 };
-
-export const logout = () => {
-  return { type: actionTypes.AUTH_LOGOUT };
-};
-
-
 
 export const auth = (email, password, view) => {
   return dispatch => {
     dispatch(authStart());
     if (view === "signUp") {
-      firebase.auth()
+      firebase
+        .auth()
         .createUserWithEmailAndPassword(email, password)
-        .catch(error => {dispatch(authFail(error.message))});
+        .then(dispatch(authSuccess()))
+        .catch(error => {
+          dispatch(authFail(error.message));
+        });
     } else if (view === "signIn") {
-      firebase.auth()
+      firebase
+        .auth()
         .signInWithEmailAndPassword(email, password)
-        .catch(error => {dispatch(authFail(error.message))});
+        .then(dispatch(authSuccess))
+        .catch(error => {
+          dispatch(authFail(error.message));
+        });
     }
+  };
+};
+
+export const authSignout = () => {
+  return dispatch => {
+    firebase
+      .auth()
+      .signOut()
+      .then(dispatch({ type: actionTypes.AUTH_SIGNOUT }))
+      .catch(error => {
+        dispatch(authFail(error.message));
+      });
   };
 };

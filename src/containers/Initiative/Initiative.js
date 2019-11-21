@@ -2,47 +2,50 @@ import React, { Component } from "react";
 import { Button, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
 
-
 import * as actionCreators from "../../store/actions/index";
 
 import AddCharForm from "../../components/InitiativeTracker/AddCharInit/AddCharInit";
 import TableContent from "../../components/InitiativeTracker/TableContent/TableContent";
 
-import './Initiative.css'
+import "./Initiative.css";
 
 class Initiative extends Component {
   state = {
     column: null,
     direction: null
-  }
-  
+  };
 
-  sortHandler = (clickedColumn) => () => {
-    const column = this.state.column
-    const direction = this.state.direction
-    const data = this.props.charsInCombat
-
+  sortHandler = clickedColumn => () => {
+    const column = this.state.column;
+    const direction = this.state.direction;
+    const data = this.props.charsInCombat;
 
     if (column !== clickedColumn) {
-      let newData = []
-      if (clickedColumn==='name'){
-        newData = this.props.charsInCombat.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1))
-      } else {newData = this.props.charsInCombat.sort((a, b) => (a[clickedColumn] < b[clickedColumn] ? -1 : 1))}
-      
+      let newData = [];
+      if (clickedColumn === "name") {
+        newData = this.props.charsInCombat.sort((a, b) =>
+          a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
+        );
+      } else {
+        newData = this.props.charsInCombat.sort((a, b) =>
+          a[clickedColumn] < b[clickedColumn] ? -1 : 1
+        );
+      }
+
       this.setState({
         column: clickedColumn,
         data: newData,
-        direction: 'ascending',
-      })
+        direction: "ascending"
+      });
 
-      return
+      return;
     }
 
     this.setState({
       data: data.reverse(),
-      direction: direction === 'ascending' ? 'descending' : 'ascending',
-    })
-  }
+      direction: direction === "ascending" ? "descending" : "ascending"
+    });
+  };
 
   render() {
     let charNames = this.props.charsInCombat.map(char =>
@@ -63,18 +66,38 @@ class Initiative extends Component {
       disabledText = null;
     }
 
-    const column = this.state.column
-    const direction = this.state.direction
+    const column = this.state.column;
+    const direction = this.state.direction;
 
     return (
-      <div className='tableDiv'>
+      <div className="tableDiv">
         <Table celled collapsing unstackable sortable>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell sorted={column === "name" ? direction :null} onClick={this.sortHandler('name')}>Name</Table.HeaderCell>
-              <Table.HeaderCell sorted={column === "speed" ? direction :null} onClick={this.sortHandler('speed')} >Speed</Table.HeaderCell>
-              <Table.HeaderCell sorted={column === "initiative" ? direction :null} onClick={this.sortHandler('initiative')} >Initiative</Table.HeaderCell>
-              <Table.HeaderCell sorted={column === "turnCount" ? direction :null} onClick={this.sortHandler('turnCount')}  >Turns Taken</Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === "name" ? direction : null}
+                onClick={this.sortHandler("name")}
+              >
+                Name
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === "speed" ? direction : null}
+                onClick={this.sortHandler("speed")}
+              >
+                Speed
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === "initiative" ? direction : null}
+                onClick={this.sortHandler("initiative")}
+              >
+                Initiative
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === "turnCount" ? direction : null}
+                onClick={this.sortHandler("turnCount")}
+              >
+                Turns Taken
+              </Table.HeaderCell>
               <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -101,7 +124,7 @@ class Initiative extends Component {
         <br />
         {disabledText}
         <br />
-        <a href="/Home">Return to Home</a>
+        <a href="/">Return to Home</a>
       </div>
     );
   }
@@ -134,7 +157,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Initiative);
+export default connect(mapStateToProps, mapDispatchToProps)(Initiative);
