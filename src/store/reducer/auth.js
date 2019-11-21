@@ -24,9 +24,6 @@ const authLogout = (state, action) => {
   return updateObject(state, { token: null, userId: null });
 };
 
-const authListener = (state, action) => {
-  return updateObject(state, { user: action.user });
-};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -38,8 +35,7 @@ const reducer = (state = initialState, action) => {
       return authFail(state, action);
     case actionTypes.AUTH_LOGOUT:
       return authLogout(state, action);
-    case actionTypes.AUTH_LISTENER:
-      return authListener(state, action);
+
     default:
       return state;
   }
