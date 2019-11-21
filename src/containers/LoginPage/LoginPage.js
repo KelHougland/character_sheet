@@ -116,6 +116,7 @@ class LoginPage extends Component {
     this.props.onAuth(
       this.state.controls.email.value,
       this.state.controls.password.value,
+      this.state.controls.userName.value,
       this.state.view
     );
   };
@@ -250,8 +251,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password, view) =>
-      dispatch(actionCreators.auth(email, password, view))
+    onAuth: (email, password, userName, view) =>
+      dispatch(actionCreators.auth(email, password, userName, view))
   };
 };
 

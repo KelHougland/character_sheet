@@ -31,14 +31,18 @@ export const authCheck = () => dispatch => {
   });
 };
 
-export const auth = (email, password, view) => {
+export const auth = (email, password, userName, view) => {
   return dispatch => {
     dispatch(authStart());
     if (view === "signUp") {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(dispatch(authSuccess()))
+        .then(response => {
+          let user = firebase.auth().currentUser;
+          user.updateProfile({ displayName: userName });
+          dispatch(authSuccess());
+        })
         .catch(error => {
           dispatch(authFail(error.message));
         });

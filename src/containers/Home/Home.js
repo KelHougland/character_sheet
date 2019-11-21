@@ -8,7 +8,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <a href="/CombatTracker">Initiate a Combat</a>
+        <h1>Hello, {this.props.user.displayName}!</h1>
+        <h3>
+          <a href="/CombatTracker">Initiate a Combat</a>
+        </h3>
         <p>
           <Button onClick={this.props.signOut}>Sign Out</Button>
         </p>
@@ -20,7 +23,8 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     charsInCombat: state.cmbt.charactersInCombat,
-    addCharacter: state.cmbt.addChar
+    addCharacter: state.cmbt.addChar,
+    user: state.auth.user
   };
 };
 
