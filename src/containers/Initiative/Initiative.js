@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
-import _ from 'lodash'
+
 
 import * as actionCreators from "../../store/actions/index";
 
@@ -65,7 +65,6 @@ class Initiative extends Component {
 
     const column = this.state.column
     const direction = this.state.direction
-    const data = this.props.charsInCombat
 
     return (
       <div className='tableDiv'>
