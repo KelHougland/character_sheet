@@ -18,7 +18,7 @@ const authFail = (state, action) => {
 };
 
 const authSignout = (state, action) => {
-  return updateObject(state, { user: null, error: null });
+  return updateObject(state, { error: null });
 };
 
 const authCheck = (state, action) => {
