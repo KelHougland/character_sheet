@@ -98,7 +98,6 @@ const reducer = (state = initialState, action) => {
       });
       return updateObject(state, { charactersInCombat: de5InitChars });
     case actionTypes.ADD_CHAR:
-      console.log(action.character);
       let newChar = {
         id: new Date(),
         name: action.character.name,
