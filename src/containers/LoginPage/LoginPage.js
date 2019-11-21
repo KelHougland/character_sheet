@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, Input } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 import SignUpForm from "../../components/LoginPage/SignUpForm/SignUpForm";
 import SignInForm from "../../components/LoginPage/SignInForm/SignInForm";
 
@@ -229,7 +229,7 @@ class LoginPage extends Component {
       </div>
     );
 
-    return <div>{formView}</div>;
+    return <div>{formView}<h3>{this.props.error ? this.props.error : null}</h3></div>;
   }
 }
 

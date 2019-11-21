@@ -27,19 +27,27 @@ export const logout = () => {
   return { type: actionTypes.AUTH_LOGOUT };
 };
 
+export const authListener = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      return {type: actionTypes.AUTH_LISTENER, user: user}
+    } else {
+      return {type: actionTypes.AUTH_LISTENER, user: null}
+    }
+  })
+}
+
 export const auth = (email, password, view) => {
   return dispatch => {
     dispatch(authStart());
     if (view === "signUp") {
       firebase.auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(response => console.log(response))
-        .catch(error => console.log(error.message));
+        .catch(error => {dispatch(authFail(error.message))});
     } else if (view === "signIn") {
       firebase.auth()
         .signInWithEmailAndPassword(email, password)
-        .then(response => console.log(response))
-        .catch(error => console.log(error.message));
+        .catch(error => {dispatch(authFail(error.message))});
     }
   };
 };
