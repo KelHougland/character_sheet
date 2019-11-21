@@ -1,5 +1,8 @@
 import * as actionTypes from "./actionTypes";
 
+import * as firebase from "firebase/app";
+import "firebase/auth";
+
 export const authStart = () => {
   return { type: actionTypes.AUTH_START };
 };
@@ -27,10 +30,8 @@ export const logout = () => {
 export const auth = (email, password, view) => {
     return dispatch => {
         dispatch(authStart());
-        const authData = {
-            email: email,
-            password: password,
-            returnSecureToken: true
-        }
+      if (view === "signUp") {
+        
+      }
     }
 }
