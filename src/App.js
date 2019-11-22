@@ -6,6 +6,7 @@ import * as actionCreators from "./store/actions/index";
 import LoginPage from "./containers/LoginPage/LoginPage";
 import Home from "./containers/Home/Home";
 import Initiative from "./containers/Initiative/Initiative";
+import Characters from "./containers/Characters/Characters";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ class App extends Component {
     if (this.props.user) {
       switchContents = (
         <Switch>
+          <Route path="/Characters" component={Characters} />
           <Route path="/CombatTracker" component={Initiative} />
           <Route path="/" exact component={Home} />
         </Switch>

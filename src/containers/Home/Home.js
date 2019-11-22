@@ -11,6 +11,8 @@ class Home extends Component {
         <h1>Hello, {this.props.user.displayName}!</h1>
         <h3>
           <a href="/CombatTracker">Initiate a Combat</a>
+          <br />
+          <a href="/Characters">Browse Characters</a>
         </h3>
         <p>
           <Button onClick={this.props.signOut}>Sign Out</Button>

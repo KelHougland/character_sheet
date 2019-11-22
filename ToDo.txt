@@ -1,4 +1,4 @@
-- stop rearranging the table, add sidebar list
-    - make it so table is in alphabetical order
-
-- change form validation to be in login page handler
+- make character sheet for white wolf, d&d 5e, and my system
+- connect to firestore to make characters savable and accessible
+- add ability to make characters
+- add list of systems
