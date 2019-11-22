@@ -70,7 +70,7 @@ class Initiative extends Component {
     const direction = this.state.direction;
 
     return (
-      <div className="tableDiv">
+      <div className="combatTableDiv">
         <Table celled collapsing unstackable sortable>
           <Table.Header>
             <Table.Row>

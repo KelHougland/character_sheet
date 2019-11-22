@@ -14,3 +14,5 @@ export {
 } from "./initiative.js";
 
 export { auth, authCheck, authSignout } from "./auth.js";
+
+export { fetchCharacters } from "./characters.js";

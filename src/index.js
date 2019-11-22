@@ -12,7 +12,7 @@ import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import combatReducer from "./store/reducer/turnOrder";
 import authReducer from "./store/reducer/auth";
-import charReducer from "./store/reducer/character";
+import charReducer from "./store/reducer/characters";
 import config from "./firebase";
 
 import "./index.css";
