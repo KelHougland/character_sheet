@@ -15,4 +15,15 @@ class Characters extends Component {
   }
 }
 
-export default Characters;
+const mapStateToProps = state => {
+  return {
+    chars: state.char.characters,
+    char: state.char.character
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Characters);
