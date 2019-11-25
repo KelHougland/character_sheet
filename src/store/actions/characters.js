@@ -16,12 +16,38 @@ export const fetchCharacters = () => {
       .firestore()
       .collection("characters")
       .get()
-      .then(qeurySnapshot => {
-        const charList = qeurySnapshot.docs.map(doc => doc.data());
+      .then(querySnapshot => {
+        const charList = querySnapshot.docs.map(doc => doc.data());
         dispatch(fetchCharactersSuccess(charList));
       })
       .catch(error => {
         dispatch(fetchCharactersFail(error.message));
+        console.log(error);
+      });
+  };
+};
+
+export const fetchSheetSuccess = sheet => {
+  return {type: actionTypes.FETCH_SHEET_SUCCESS, sheet: sheet}
+}
+
+export const fetchSheetFail = error => {
+  return { type: actionTypes.FETCH_SHEET_FAIL, error: error };
+};
+
+export const fetchSheet = () => {
+  return dispatch => {
+    firebase
+      .firestore()
+      .collection("baseSheets")
+      .where("system","==","WoD Dark Ages")
+      .get()
+      .then(querySnapshot => {
+        const sheet = querySnapshot.docs.map(doc => doc.data())[0];
+        dispatch(fetchSheetSuccess(sheet));
+      })
+      .catch(error => {
+        dispatch(fetchSheetFail(error.message));
         console.log(error);
       });
   };

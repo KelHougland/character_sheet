@@ -16,4 +16,4 @@ export {
 
 export { auth, authCheck, authSignout } from "./auth.js";
 
-export { fetchCharacters } from "./characters.js";
+export { fetchCharacters, fetchSheet } from "./characters.js";

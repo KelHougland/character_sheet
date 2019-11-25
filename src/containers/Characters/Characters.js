@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Table } from "semantic-ui-react";
+import { Table, Button } from "semantic-ui-react";
 import * as actionCreators from "../../store/actions/index";
 import "./Characters.css";
 
 class Characters extends Component {
+  state = {
+    view: "initial"
+  }
   componentDidMount() {
     this.props.fetchChars();
   }
 
-  render() {
+
+  generateListView() {
     let listOfChars = (
       <Table.Row key="1">
         <Table.Cell>None Loaded</Table.Cell>
@@ -39,6 +43,30 @@ class Characters extends Component {
         <Table.Body>{listOfChars}</Table.Body>
       </Table>
     );
+    return charTable
+  }
+
+  changeViewHandler = view => {
+    let prevState = this.state;
+    this.props.fetchSheet();
+    return this.setState({ ...prevState, view: view });
+  };
+
+
+  render() {
+    let pageView = null
+    if (this.state.view === "initial") {
+      pageView = this.generateListView()
+    } else {
+      pageView = (<Button onClick={()=>this.changeViewHandler("initial")}>Return to List</Button>)
+    }
+
+    let createChar = (<Button onClick={()=>this.changeViewHandler("create")}>Create a Character</Button>)
+
+    if (this.state.view === "create") {
+      console.log(this.props.sheet)
+      createChar = (<h1>Testing Testing</h1>)
+    }
 
     return (
       <div>
@@ -46,7 +74,9 @@ class Characters extends Component {
           This will be the characters page, including list of characters with
           components for individual characters
         </h1>
-        {charTable}
+        {pageView}
+        <br />
+        {createChar}
         <br />
         <a href="/">Return to Home</a>
       </div>
@@ -57,12 +87,14 @@ class Characters extends Component {
 const mapStateToProps = state => {
   return {
     chars: state.char.characters,
-    char: state.char.character
+    char: state.char.character,
+    sheet: state.char.sheet
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return { fetchChars: () => dispatch(actionCreators.fetchCharacters()) };
+  return { fetchChars: () => dispatch(actionCreators.fetchCharacters()),
+  fetchSheet: () => dispatch(actionCreators.fetchSheet()) };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Characters);
