@@ -22,6 +22,13 @@ const addCharForm = props => (
       <Table.HeaderCell>
         <Input
           type="text"
+          value={props.charSpeedBonus}
+          onChange={event => props.changeSpeedBonus(event.target.value)}
+        ></Input>
+      </Table.HeaderCell>
+      <Table.HeaderCell>
+        <Input
+          type="text"
           value={props.charInit}
           onChange={event => props.changeInit(event.target.value)}
         ></Input>

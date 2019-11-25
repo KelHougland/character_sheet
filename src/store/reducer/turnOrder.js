@@ -16,11 +16,11 @@ const initialState = {
   addChar: {
     name: "name",
     speed: "speed",
+    speedBonus: "speed bonus",
     initiative: "initiative",
     type: "PC"
   }
 };
-
 
 const reducer = (state = initialState, action) => {
   let charList = state.charactersInCombat;
@@ -102,7 +102,7 @@ const reducer = (state = initialState, action) => {
         id: new Date(),
         name: action.character.name,
         speed: Number(action.character.speed),
-        speedBonus: 0,
+        speedBonus: Number(action.character.speedBonus),
         initiative: Number(action.character.initiative),
         turnCount: 0
       };
@@ -111,6 +111,7 @@ const reducer = (state = initialState, action) => {
         addChar: {
           name: "name",
           speed: "speed",
+          speedBonus: "speed bonus",
           initiative: "initiative",
           type: "PC"
         }
@@ -122,28 +123,24 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { charactersInCombat: updatedChars });
 
     case actionTypes.CHANGE_ADDCHAR_NAME:
-      let midNameChar = {
-        name: action.name,
-        speed: state.addChar.speed,
-        initiative: state.addChar.initiative
-      };
+      let midNameChar = updateObject(state.addChar, { name: action.name });
 
       return updateObject(state, { addChar: midNameChar });
 
     case actionTypes.CHANGE_ADDCHAR_SPEED:
-      let midSpeedChar = {
-        name: state.addChar.name,
-        speed: action.speed,
-        initiative: state.addChar.initiative
-      };
+      let midSpeedChar = updateObject(state.addChar, { speed: action.speed });
       return updateObject(state, { addChar: midSpeedChar });
 
+    case actionTypes.CHANGE_ADDCHAR_SPEEDBONUS:
+      let midSpeedBonusChar = updateObject(state.addChar, {
+        speedBonus: action.speedBonus
+      });
+      return updateObject(state, { addChar: midSpeedBonusChar });
+
     case actionTypes.CHANGE_ADDCHAR_INIT:
-      let midInitChar = {
-        name: state.addChar.name,
-        speed: state.addChar.speed,
+      let midInitChar = updateObject(state.addChar, {
         initiative: action.init
-      };
+      });
 
       return updateObject(state, { addChar: midInitChar });
     default:

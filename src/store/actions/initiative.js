@@ -56,6 +56,13 @@ export const changeAddCharSpeed = charSpeed => {
   };
 };
 
+export const changeAddCharSpeedBonus = charSpeedBonus => {
+  return {
+    type: actionTypes.CHANGE_ADDCHAR_SPEEDBONUS,
+    speedBonus: charSpeedBonus
+  };
+};
+
 export const changeAddCharInit = charInit => {
   return {
     type: actionTypes.CHANGE_ADDCHAR_INIT,

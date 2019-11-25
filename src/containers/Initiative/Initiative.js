@@ -60,6 +60,7 @@ class Initiative extends Component {
     if (
       !charNames.includes(this.props.addCharacter.name.toLowerCase()) &&
       !isNaN(Number(this.props.addCharacter.speed)) &&
+      !isNaN(Number(this.props.addCharacter.speedBonus)) &&
       !isNaN(Number(this.props.addCharacter.initiative))
     ) {
       addDisabled = false;
@@ -84,7 +85,13 @@ class Initiative extends Component {
                 sorted={column === "speed" ? direction : null}
                 onClick={this.sortHandler("speed")}
               >
-                Speed
+                Current Speed
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === "speedBonus" ? direction : null}
+                onClick={this.sortHandler("speedBonus")}
+              >
+                Speed Bonus
               </Table.HeaderCell>
               <Table.HeaderCell
                 sorted={column === "initiative" ? direction : null}
@@ -109,9 +116,11 @@ class Initiative extends Component {
           <AddCharForm
             charName={this.props.addCharacter.name}
             charSpeed={this.props.addCharacter.speed}
+            charSpeedBonus={this.props.addCharacter.speedBonus}
             charInit={this.props.addCharacter.initiative}
             changeName={this.props.changeAddCharName}
             changeSpeed={this.props.changeAddCharSpeed}
+            changeSpeedBonus={this.props.changeAddCharSpeedBonus}
             changeInit={this.props.changeAddCharInit}
             addChar={this.props.addChar}
             charToAdd={this.props.addCharacter}
@@ -152,6 +161,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.changeAddCharName(newName)),
     changeAddCharSpeed: newSpeed =>
       dispatch(actionCreators.changeAddCharSpeed(newSpeed)),
+    changeAddCharSpeedBonus: newSpeedBonus =>
+      dispatch(actionCreators.changeAddCharSpeedBonus(newSpeedBonus)),
     changeAddCharInit: newInit =>
       dispatch(actionCreators.changeAddCharInit(newInit))
   };

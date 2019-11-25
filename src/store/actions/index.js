@@ -10,7 +10,8 @@ export {
   delChar,
   changeAddCharInit,
   changeAddCharName,
-  changeAddCharSpeed
+  changeAddCharSpeed,
+  changeAddCharSpeedBonus
 } from "./initiative.js";
 
 export { auth, authCheck, authSignout } from "./auth.js";
