@@ -12,6 +12,7 @@ import "./Initiative.css";
 class Initiative extends Component {
   state = {
     column: null,
+    data: null,
     direction: null
   };
 
@@ -19,7 +20,6 @@ class Initiative extends Component {
     const column = this.state.column;
     const direction = this.state.direction;
     const data = this.props.charsInCombat;
-
     if (column !== clickedColumn) {
       let newData = [];
       if (clickedColumn === "name") {
