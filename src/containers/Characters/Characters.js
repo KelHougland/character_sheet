@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Table, Button } from "semantic-ui-react";
+import CreateCharForm from "../../components/Characters/CreateCharForm/CreateCharForm";
 import * as actionCreators from "../../store/actions/index";
 import "./Characters.css";
 
 class Characters extends Component {
   state = {
     view: "initial"
-  }
+  };
   componentDidMount() {
     this.props.fetchChars();
   }
-
 
   generateListView() {
     let listOfChars = (
@@ -43,7 +43,7 @@ class Characters extends Component {
         <Table.Body>{listOfChars}</Table.Body>
       </Table>
     );
-    return charTable
+    return charTable;
   }
 
   changeViewHandler = view => {
@@ -52,20 +52,26 @@ class Characters extends Component {
     return this.setState({ ...prevState, view: view });
   };
 
-
   render() {
-    let pageView = null
+    let pageView = null;
     if (this.state.view === "initial") {
-      pageView = this.generateListView()
+      pageView = this.generateListView();
     } else {
-      pageView = (<Button onClick={()=>this.changeViewHandler("initial")}>Return to List</Button>)
+      pageView = (
+        <Button onClick={() => this.changeViewHandler("initial")}>
+          Return to List
+        </Button>
+      );
     }
 
-    let createChar = (<Button onClick={()=>this.changeViewHandler("create")}>Create a Character</Button>)
+    let createChar = (
+      <Button onClick={() => this.changeViewHandler("create")}>
+        Create a Character
+      </Button>
+    );
 
-    if (this.state.view === "create") {
-      console.log(this.props.sheet)
-      createChar = (<h1>Testing Testing</h1>)
+    if (this.state.view === "create" && this.props.sheet) {
+      createChar = <CreateCharForm sheet={this.props.sheet}/>;
     }
 
     return (
@@ -93,8 +99,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { fetchChars: () => dispatch(actionCreators.fetchCharacters()),
-  fetchSheet: () => dispatch(actionCreators.fetchSheet()) };
+  return {
+    fetchChars: () => dispatch(actionCreators.fetchCharacters()),
+    fetchSheet: () => dispatch(actionCreators.fetchSheet())
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Characters);

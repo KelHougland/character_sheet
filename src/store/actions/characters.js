@@ -43,8 +43,9 @@ export const fetchSheet = () => {
       .where("system","==","WoD Dark Ages")
       .get()
       .then(querySnapshot => {
-        const sheet = querySnapshot.docs.map(doc => doc.data())[0];
-        dispatch(fetchSheetSuccess(sheet));
+        const sheet = querySnapshot.docs.map(doc => doc.data())[0].contents;
+        const sheetJSON = JSON.parse(sheet)
+        dispatch(fetchSheetSuccess(sheetJSON));
       })
       .catch(error => {
         dispatch(fetchSheetFail(error.message));
