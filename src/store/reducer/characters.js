@@ -7,6 +7,7 @@ let initialState = {
   charLoadError: null,
   sheet: null,
   system: null,
+  systemId: null,
   sheetLoadError: null
 };
 
@@ -19,7 +20,7 @@ const fetchCharactersFail = (state, action) => {
 };
 
 const fetchSheetSuccess = (state, action) => {
-  return updateObject(state, { sheet: action.sheet, system: action.system });
+  return updateObject(state, { sheet: JSON.parse(action.sheet), system: action.system, systemId: action.systemId });
 };
 
 const fetchSheetFail = (state, action) => {
