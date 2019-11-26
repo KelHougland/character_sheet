@@ -1,16 +1,14 @@
 import React from "react";
 
 const formContentBlock = props => {
-  const blockOutput = ''
-  If(Object.keys(props.block)) {
-    
+  let blockOutput = "";
+  if (Object.keys(props.block).length > 1) {
+    Object.keys(props.block).map(key => <li key={key}>{key}</li>);
+  } else {
+    blockOutput = props.block
   }
-  
-  
-  
-  Object.keys(props.block).map(key => <p key={key}>{key}</p>)
-
-  return <div>{blockOutput}</div>;
+  console.log("blockoutput", blockOutput)
+  return {blockOutput};
 };
 
 export default formContentBlock;
