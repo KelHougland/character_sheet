@@ -27,8 +27,8 @@ export const fetchCharacters = () => {
   };
 };
 
-export const fetchSheetSuccess = sheet => {
-  return {type: actionTypes.FETCH_SHEET_SUCCESS, sheet: sheet}
+export const fetchSheetSuccess = (sheet, system) => {
+  return {type: actionTypes.FETCH_SHEET_SUCCESS, sheet: sheet, system: system}
 }
 
 export const fetchSheetFail = error => {
@@ -45,7 +45,7 @@ export const fetchSheet = () => {
       .then(querySnapshot => {
         const sheet = querySnapshot.docs.map(doc => doc.data())[0].contents;
         const sheetJSON = JSON.parse(sheet)
-        dispatch(fetchSheetSuccess(sheetJSON));
+        dispatch(fetchSheetSuccess(sheetJSON,"WoD Dark Ages"));
       })
       .catch(error => {
         dispatch(fetchSheetFail(error.message));

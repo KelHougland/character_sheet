@@ -71,7 +71,7 @@ class Characters extends Component {
     );
 
     if (this.state.view === "create" && this.props.sheet) {
-      createChar = <CreateCharForm sheet={this.props.sheet}/>;
+      createChar = <CreateCharForm system= {this.props.system} sheet={this.props.sheet}/>;
     }
 
     return (
@@ -94,7 +94,8 @@ const mapStateToProps = state => {
   return {
     chars: state.char.characters,
     char: state.char.character,
-    sheet: state.char.sheet
+    sheet: state.char.sheet,
+    system: state.char.system
   };
 };
 
