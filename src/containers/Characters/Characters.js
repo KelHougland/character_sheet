@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Table, Button } from "semantic-ui-react";
-import CreateCharForm from "../../components/Characters/CreateCharForm/CreateCharForm";
+import CreateCharForm from "../../components/Characters/CreateChar/CreateCharForm/CreateCharForm";
 import * as actionCreators from "../../store/actions/index";
 import "./Characters.css";
 
