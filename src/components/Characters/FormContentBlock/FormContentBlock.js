@@ -1,14 +1,9 @@
 import React from "react";
+import "./FormContentBlock.css"
 
 const formContentBlock = props => {
-  let blockOutput = "";
-  if (Object.keys(props.block).length > 1) {
-    Object.keys(props.block).map(key => <li key={key}>{key}</li>);
-  } else {
-    blockOutput = props.block
-  }
-  console.log("blockoutput", blockOutput)
-  return {blockOutput};
+  let blockOutput = Object.keys(props.blockContent).map(key => <p className="innerBlock" key={key}>{key}</p>)
+  return blockOutput;
 };
 
 export default formContentBlock;

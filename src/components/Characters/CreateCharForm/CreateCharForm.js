@@ -1,20 +1,23 @@
 import React from "react";
+
 import FormContentBlock from "../FormContentBlock/FormContentBlock";
+import "./CreateCharForm.css";
 
 const formContentHandler = formInfo => {
-   let formContent = ''
-    if (Object.keys(formInfo).length>1){
-        formContent = Object.keys(formInfo).map(key => <div><ul>{key}</ul><FormContentBlock block={formInfo[key]}/></div>)
-    } else {  formContent = <FormContentBlock block={formInfo} />;}
-    console.log("formInfo", formInfo)
-    console.log("formcontent", formContent)
-    console.log(Object.keys(formInfo).length)
+  let formContent = Object.keys(formInfo).map(key => {
+    let innerContent = <FormContentBlock blockContent={formInfo[key]} />;
+    return (
+      <div className="mainBlock" key={key}>
+        {key} {innerContent}
+      </div>
+    );
+  });
   return formContent;
 };
 
 const createCharForm = props => {
   const characterSheet = formContentHandler(props.sheet);
-  return {characterSheet};
+  return <div className="topLevel">{characterSheet}</div>;
 };
 
 export default createCharForm;
