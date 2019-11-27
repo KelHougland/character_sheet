@@ -8,7 +8,7 @@ const formContentHandler = formInfo => {
     let innerContent = <FormContentBlock blockContent={formInfo[key]} />;
     return (
       <div className="mainBlock" key={key}>
-        {key} {innerContent}
+        <h2>{key}</h2> {innerContent}
       </div>
     );
   });
@@ -17,7 +17,7 @@ const formContentHandler = formInfo => {
 
 const createCharForm = props => {
   const characterSheet = formContentHandler(props.sheet);
-  return <div className="topLevel">{characterSheet}</div>;
+  return <div className="topLevel"><h1>{props.system}</h1>{characterSheet}</div>;
 };
 
 export default createCharForm;
