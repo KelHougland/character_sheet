@@ -4,7 +4,7 @@ import "./InnerFormBlock";
 
 const innerFormBlock = props => {
 
-   const innerContent = Object.keys(props.content).map(key => <p className="innerBlock" key={key}>{key}</p>)
+   const innerContent = Object.keys(props.content).map(key => <p className="innerBlock" key={key}>{key}:</p>)
   return innerContent;
 };
 

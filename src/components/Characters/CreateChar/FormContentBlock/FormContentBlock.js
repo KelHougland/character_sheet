@@ -9,7 +9,7 @@ const formContentBlock = props => {
   if(Object.keys(props.blockContent[Object.keys(props.blockContent)[0]]).length > 0) {
     blockOutput = Object.keys(props.blockContent).map(key => <div className="subBlock" key={key}><h3>{key}</h3> <InnerFormBlock content={props.blockContent[key]}/></div>)
   } else {
-    blockOutput = Object.keys(props.blockContent).map(key => <p key={key}>{key}</p>)
+    blockOutput = Object.keys(props.blockContent).map(key => <p key={key}>{key}:</p>)
   }
   
   return blockOutput;
