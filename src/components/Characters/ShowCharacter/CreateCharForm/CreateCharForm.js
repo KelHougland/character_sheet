@@ -1,5 +1,4 @@
 import React from "react";
-import { Form, Button } from "semantic-ui-react";
 
 import FormContentBlock from "../FormContentBlock/FormContentBlock";
 import "./CreateCharForm.css";
@@ -18,15 +17,7 @@ const formContentHandler = formInfo => {
 
 const createCharForm = props => {
   const characterSheet = formContentHandler(props.sheet);
-  return (
-    <Form className="topLevel">
-      <h1>{props.system}</h1>
-      {characterSheet}
-      <Button disabled={true} type="submit">
-        Create Character
-      </Button>
-    </Form>
-  );
+  return <div className="topLevel"><h1>{props.system}</h1>{characterSheet}</div>;
 };
 
 export default createCharForm;

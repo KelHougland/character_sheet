@@ -32,6 +32,7 @@ class Characters extends Component {
     }
 
     let charTable = (
+      <h2>Your Characters</h2>
       <Table className="charTableDiv" celled collapsing unstackable>
         <Table.Header>
           <Table.Row>
@@ -71,15 +72,14 @@ class Characters extends Component {
     );
 
     if (this.state.view === "create" && this.props.sheet) {
-      createChar = <CreateCharForm system= {this.props.system} sheet={this.props.sheet}/>;
+      createChar = (
+        <CreateCharForm system={this.props.system} sheet={this.props.sheet} />
+      );
     }
 
     return (
       <div>
-        <h1>
-          This will be the characters page, including list of characters with
-          components for individual characters
-        </h1>
+        <h1>View and Create Characters</h1>
         {pageView}
         <br />
         {createChar}
