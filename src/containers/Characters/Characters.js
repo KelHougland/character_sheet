@@ -32,9 +32,11 @@ class Characters extends Component {
     }
 
     let charTable = (
-      <h2>Your Characters</h2>
-      <Table className="charTableDiv" celled collapsing unstackable>
+      <Table className="charTableDiv" celled collapsing unstackable textAlign="center">
         <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell colSpan="3">Your Characters</Table.HeaderCell>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell>Character Name</Table.HeaderCell>
             <Table.HeaderCell>Player Name</Table.HeaderCell>
@@ -95,7 +97,8 @@ const mapStateToProps = state => {
     chars: state.char.characters,
     char: state.char.character,
     sheet: state.char.sheet,
-    system: state.char.system
+    system: state.char.system,
+    user: state.auth.user
   };
 };
 
