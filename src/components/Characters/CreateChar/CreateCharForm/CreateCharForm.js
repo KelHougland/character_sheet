@@ -8,8 +8,11 @@ const formContentHandler = formInfo => {
   let formContent = Object.keys(formInfo).map(key => {
     let innerContent = <FormContentBlock blockContent={formInfo[key]} />;
     return (
-      <div className="mainBlock" key={key}>
-        <h2>{key}</h2> {innerContent}
+      <div key={key}>
+        <h2 >{key}</h2>
+        <div className="mainBlock" >
+          {innerContent}
+        </div>
       </div>
     );
   });
