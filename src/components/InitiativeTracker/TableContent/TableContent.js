@@ -6,7 +6,7 @@ const tableContent = props => {
   let charView = props.charList.map(character => (
     <Table.Row key={character.id}>
       <Table.Cell>{character.name}</Table.Cell>
-      <Table.Cell>{character.speed + character.speedBonus}</Table.Cell>
+      <Table.Cell>{character.totalSpeed}</Table.Cell>
       <Table.Cell>
         {character.speedBonus}{" "}
         <Button onClick={() => props.propsToPass.speedIncrement(character.id)}>
