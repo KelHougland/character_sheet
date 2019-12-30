@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Table, Button } from "semantic-ui-react";
-import CreateCharForm from "../../components/Characters/CreateCharForm/CreateCharForm";
+import CreateCharForm from "../../components/Characters/CreateChar/CreateCharForm/CreateCharForm";
 import * as actionCreators from "../../store/actions/index";
 import "./Characters.css";
 
@@ -32,8 +32,11 @@ class Characters extends Component {
     }
 
     let charTable = (
-      <Table className="charTableDiv" celled collapsing unstackable>
+      <Table className="charTableDiv" celled collapsing unstackable textAlign="center">
         <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell colSpan="3">Your Characters</Table.HeaderCell>
+          </Table.Row>
           <Table.Row>
             <Table.HeaderCell>Character Name</Table.HeaderCell>
             <Table.HeaderCell>Player Name</Table.HeaderCell>
@@ -71,15 +74,14 @@ class Characters extends Component {
     );
 
     if (this.state.view === "create" && this.props.sheet) {
-      createChar = <CreateCharForm sheet={this.props.sheet}/>;
+      createChar = (
+        <CreateCharForm system={this.props.system} sheet={this.props.sheet} />
+      );
     }
 
     return (
       <div>
-        <h1>
-          This will be the characters page, including list of characters with
-          components for individual characters
-        </h1>
+        <h1>View and Create Characters</h1>
         {pageView}
         <br />
         {createChar}
@@ -94,7 +96,9 @@ const mapStateToProps = state => {
   return {
     chars: state.char.characters,
     char: state.char.character,
-    sheet: state.char.sheet
+    sheet: state.char.sheet,
+    system: state.char.system,
+    user: state.auth.user
   };
 };
 

@@ -82,8 +82,8 @@ class Initiative extends Component {
                 Name
               </Table.HeaderCell>
               <Table.HeaderCell
-                sorted={column === "speed" ? direction : null}
-                onClick={this.sortHandler("speed")}
+                sorted={column === "totalSpeed" ? direction : null}
+                onClick={this.sortHandler("totalSpeed")}
               >
                 Current Speed
               </Table.HeaderCell>
