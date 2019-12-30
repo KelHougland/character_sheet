@@ -4,7 +4,10 @@ import { Button, Table } from "semantic-ui-react";
 
 const tableContent = props => {
   let charView = props.charList.map(character => (
-    <Table.Row key={character.id}>
+    <Table.Row
+      positive={character.initiative >= 50 ? true : false}
+      key={character.id}
+    >
       <Table.Cell>{character.name}</Table.Cell>
       <Table.Cell>{character.speed + character.speedBonus}</Table.Cell>
       <Table.Cell>
