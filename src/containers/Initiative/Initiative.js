@@ -132,9 +132,8 @@ class Initiative extends Component {
             addDisable={addDisabled}
           />
         </Table>
-
-        <Button onClick={this.props.initiativePass}>Next Turn</Button>
-
+        <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
+        <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>
         <br />
         {disabledText}
         <br />
@@ -170,7 +169,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.changeAddCharSpeedBonus(newSpeedBonus)),
     changeAddCharInit: newInit =>
       dispatch(actionCreators.changeAddCharInit(newInit)),
-    getCombatChars: () => dispatch(actionCreators.getCombatChars())
+    getCombatChars: () => dispatch(actionCreators.getCombatChars()),
+    removeCombatChars: () => dispatch(actionCreators.removeCombatChars())
   };
 };
 

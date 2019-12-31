@@ -138,6 +138,22 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { addChar: midInitChar });
     case actionTypes.GET_COMBAT_CHARS:
       return updateObject(state, { charactersInCombat: action.chars });
+    case actionTypes.REMOVE_COMBAT_CHARS:
+      localStorage.clear();
+      const defaultStart = [
+        {
+          id: "456",
+          name: "Round",
+          speed: 5,
+          totalSpeed: 5,
+          speedBonus: 0,
+          initiative: 0,
+          turnCount: 0,
+          type: "NPC"
+        }
+      ];
+
+      return updateObject(state, { charactersInCombat: defaultStart });
 
     default:
       return state;

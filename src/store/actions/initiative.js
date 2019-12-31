@@ -83,7 +83,6 @@ export const getCombatChars = () => {
       type: "NPC"
     }
   ];
-
   if (localStorage.getItem("charsInCombat") === null) {
     return { type: actionTypes.GET_COMBAT_CHARS, chars: defaultStart };
   } else {
@@ -91,4 +90,8 @@ export const getCombatChars = () => {
     const charJSON = JSON.parse(storedChars);
     return { type: actionTypes.GET_COMBAT_CHARS, chars: charJSON };
   }
+};
+
+export const removeCombatChars = () => {
+  return { type: actionTypes.REMOVE_COMBAT_CHARS };
 };

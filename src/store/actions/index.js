@@ -12,7 +12,8 @@ export {
   changeAddCharName,
   changeAddCharSpeed,
   changeAddCharSpeedBonus,
-  getCombatChars
+  getCombatChars,
+  removeCombatChars
 } from "./initiative.js";
 
 export { auth, authCheck, authSignout } from "./auth.js";
