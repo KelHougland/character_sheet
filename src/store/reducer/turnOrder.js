@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  charactersInCombat: [{}],
+  charactersInCombat: [{ id: "default" }],
   addChar: {
     name: "name",
     speed: "speed",
@@ -32,6 +32,7 @@ const reducer = (state = initialState, action) => {
         charInits = charList.map(char => char.initiative);
         maxInit = Math.max(...charInits);
       }
+      localStorage.setItem("charsInCombat", JSON.stringify(charList));
       return updateObject(state, { charactersInCombat: charList });
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = charList.map(char => {
@@ -136,7 +137,6 @@ const reducer = (state = initialState, action) => {
 
       return updateObject(state, { addChar: midInitChar });
     case actionTypes.GET_COMBAT_CHARS:
-      console.log(action.chars);
       return updateObject(state, { charactersInCombat: action.chars });
 
     default:

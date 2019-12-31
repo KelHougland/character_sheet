@@ -71,7 +71,6 @@ export const changeAddCharInit = charInit => {
 };
 
 export const getCombatChars = () => {
-  localStorage.clear();
   const defaultStart = [
     {
       id: "456",
@@ -84,12 +83,12 @@ export const getCombatChars = () => {
       type: "NPC"
     }
   ];
+
   if (localStorage.getItem("charsInCombat") === null) {
     return { type: actionTypes.GET_COMBAT_CHARS, chars: defaultStart };
   } else {
-    //const storedChars = localStorage.getItem("charsInCombat");
-    //const charJSON = JSON.parse(storedChars);
-    const charJSON = localStorage.getItem("charsInCombat");
+    const storedChars = localStorage.getItem("charsInCombat");
+    const charJSON = JSON.parse(storedChars);
     return { type: actionTypes.GET_COMBAT_CHARS, chars: charJSON };
   }
 };
