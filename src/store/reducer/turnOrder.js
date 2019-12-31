@@ -2,18 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
-  charactersInCombat: [
-    {
-      id: "456",
-      name: "Round",
-      speed: 5,
-      totalSpeed: 5,
-      speedBonus: 0,
-      initiative: 0,
-      turnCount: 0,
-      type: "NPC"
-    }
-  ],
+  charactersInCombat: [{}],
   addChar: {
     name: "name",
     speed: "speed",
@@ -103,7 +92,8 @@ const reducer = (state = initialState, action) => {
         id: new Date(),
         name: action.character.name,
         speed: Number(action.character.speed),
-        totalSpeed: Number(action.character.speed) + Number(action.character.speedBonus),
+        totalSpeed:
+          Number(action.character.speed) + Number(action.character.speedBonus),
         speedBonus: Number(action.character.speedBonus),
         initiative: Number(action.character.initiative),
         turnCount: 0
@@ -145,6 +135,10 @@ const reducer = (state = initialState, action) => {
       });
 
       return updateObject(state, { addChar: midInitChar });
+    case actionTypes.GET_COMBAT_CHARS:
+      console.log(action.chars);
+      return updateObject(state, { charactersInCombat: action.chars });
+
     default:
       return state;
   }

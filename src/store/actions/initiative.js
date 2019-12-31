@@ -69,3 +69,27 @@ export const changeAddCharInit = charInit => {
     init: charInit
   };
 };
+
+export const getCombatChars = () => {
+  localStorage.clear();
+  const defaultStart = [
+    {
+      id: "456",
+      name: "Round",
+      speed: 5,
+      totalSpeed: 5,
+      speedBonus: 0,
+      initiative: 0,
+      turnCount: 0,
+      type: "NPC"
+    }
+  ];
+  if (localStorage.getItem("charsInCombat") === null) {
+    return { type: actionTypes.GET_COMBAT_CHARS, chars: defaultStart };
+  } else {
+    //const storedChars = localStorage.getItem("charsInCombat");
+    //const charJSON = JSON.parse(storedChars);
+    const charJSON = localStorage.getItem("charsInCombat");
+    return { type: actionTypes.GET_COMBAT_CHARS, chars: charJSON };
+  }
+};
