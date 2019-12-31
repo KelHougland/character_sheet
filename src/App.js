@@ -24,7 +24,7 @@ class App extends Component {
     } else {
       switchContents = (
         <Switch>
-          <Route path="/" exact component={LoginPage} />
+          <Route path="/" component={LoginPage} />
         </Switch>
       );
     }
