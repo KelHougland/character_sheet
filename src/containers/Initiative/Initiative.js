@@ -16,6 +16,10 @@ class Initiative extends Component {
     direction: null
   };
 
+  componentDidMount() {
+    this.props.getCombatChars();
+  }
+
   sortHandler = clickedColumn => () => {
     const column = this.state.column;
     const direction = this.state.direction;
@@ -48,12 +52,13 @@ class Initiative extends Component {
   };
 
   render() {
-    let charNames = this.props.charsInCombat.map(char =>
-      char.name.toLowerCase()
-    );
-    charNames.push("");
-    charNames.push("name");
-    charNames.push("round");
+    let charNames = [];
+    if (Object.keys(this.props.charsInCombat[0]).length > 1) {
+      charNames = this.props.charsInCombat.map(char => char.name.toLowerCase());
+      charNames.push("");
+      charNames.push("name");
+      charNames.push("round");
+    }
     let addDisabled = true;
     let disabledText =
       "Please valid name, speed, and initiative to add a character";
@@ -127,9 +132,8 @@ class Initiative extends Component {
             addDisable={addDisabled}
           />
         </Table>
-
-        <Button onClick={this.props.initiativePass}>Next Turn</Button>
-
+        <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
+        <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>
         <br />
         {disabledText}
         <br />
@@ -164,7 +168,9 @@ const mapDispatchToProps = dispatch => {
     changeAddCharSpeedBonus: newSpeedBonus =>
       dispatch(actionCreators.changeAddCharSpeedBonus(newSpeedBonus)),
     changeAddCharInit: newInit =>
-      dispatch(actionCreators.changeAddCharInit(newInit))
+      dispatch(actionCreators.changeAddCharInit(newInit)),
+    getCombatChars: () => dispatch(actionCreators.getCombatChars()),
+    removeCombatChars: () => dispatch(actionCreators.removeCombatChars())
   };
 };
 
