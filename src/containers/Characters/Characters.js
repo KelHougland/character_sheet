@@ -32,7 +32,13 @@ class Characters extends Component {
     }
 
     let charTable = (
-      <Table className="charTableDiv" celled collapsing unstackable textAlign="center">
+      <Table
+        className="charTableDiv"
+        celled
+        collapsing
+        unstackable
+        textAlign="center"
+      >
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell colSpan="3">Your Characters</Table.HeaderCell>
