@@ -1,6 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
-import { restElement } from "@babel/types";
 
 const initialState = {
   charactersInCombat: [{ id: "default" }],
@@ -157,7 +156,7 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { charactersInCombat: defaultStart });
       case actionTypes.RESET_INITIATIVE:
         let resetChars = state.charactersInCombat.map(char => {
-          return updateObject(char,{initiative: 0})
+          return updateObject(char,{initiative: 0, turnCount: 0})
         })
         return updateObject(state, {charactersInCombat: resetChars})
     default:
