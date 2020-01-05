@@ -4,6 +4,11 @@ export const initiativePass = () => {
   return { type: actionTypes.INITIATIVE_PASS };
 };
 
+export const resetInitiative = () => {
+  return { type: actionTypes.RESET_INITIATIVE };
+};
+
+
 export const speedIncrement = resElId => {
   return { type: actionTypes.SPEED_INCREMENT, resultElId: resElId };
 };

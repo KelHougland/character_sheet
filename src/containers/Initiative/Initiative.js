@@ -134,6 +134,8 @@ class Initiative extends Component {
         </Table>
         <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
         <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>
+        {" "}
+        <Button onClick={this.props.resetInitiative}>Reset Initiative</Button>
         <br />
         {disabledText}
         <br />
@@ -170,7 +172,8 @@ const mapDispatchToProps = dispatch => {
     changeAddCharInit: newInit =>
       dispatch(actionCreators.changeAddCharInit(newInit)),
     getCombatChars: () => dispatch(actionCreators.getCombatChars()),
-    removeCombatChars: () => dispatch(actionCreators.removeCombatChars())
+    removeCombatChars: () => dispatch(actionCreators.removeCombatChars()),
+    resetInitiative: () => dispatch(actionCreators.resetInitiative())
   };
 };
 
