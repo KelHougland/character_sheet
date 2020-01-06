@@ -6,6 +6,7 @@
 .ui.table td.positive,
 .ui.table tr.positive {
   font-weight: 700;
+  background: #f5fff6 !important;
 }
 
 .ui.table td,
