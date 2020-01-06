@@ -5,5 +5,14 @@
 
 .ui.table td.positive,
 .ui.table tr.positive {
+  font-weight: 700;
+}
+
+.ui.table td,
+.ui.table tr {
   font-weight: 600;
+}
+
+.ui.table thead th {
+  font-weight: 800;
 }
