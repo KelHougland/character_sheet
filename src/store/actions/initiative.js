@@ -82,6 +82,10 @@ export const changeAddCharInit = charInit => {
   };
 };
 
+export const storeCombatChars = (charList) => {
+  return {type: actionTypes.STORE_COMBAT_CHARS, chars: charList}
+}
+
 export const getCombatChars = () => {
   const defaultStart = [
     {

@@ -138,6 +138,7 @@ class Initiative extends Component {
             addDisable={addDisabled}
           />
         </Table>
+        <Button onClick={() => this.props.storeCombatChars(this.props.charsInCombat)}>Store Characters</Button>{" "}
         <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
         <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>{" "}
         <Button onClick={this.props.resetInitiative}>Reset Initiative</Button>
@@ -180,7 +181,8 @@ const mapDispatchToProps = dispatch => {
     removeCombatChars: () => dispatch(actionCreators.removeCombatChars()),
     resetInitiative: () => dispatch(actionCreators.resetInitiative()),
     defActIncrement: id => dispatch(actionCreators.defenseIncrement(id)),
-    defActDecrement: id => dispatch(actionCreators.defenseDecrement(id))
+    defActDecrement: id => dispatch(actionCreators.defenseDecrement(id)),
+    storeCombatChars: (charList) => dispatch(actionCreators.storeCombatChars(charList))
   };
 };
 

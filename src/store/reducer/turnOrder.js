@@ -201,6 +201,9 @@ const reducer = (state = initialState, action) => {
         return updateObject(char, { totalSpeed: char.speed, speedBonus: 0, initiative: 0, turnCount: 0 });
       });
       return updateObject(state, { charactersInCombat: resetChars });
+    case actionTypes.STORE_COMBAT_CHARS:
+      localStorage.setItem("charsInCombat", JSON.stringify(charList))
+      return updateObject(state, {charactersInCombat: action.chars})
     default:
       return state;
   }

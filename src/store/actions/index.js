@@ -16,7 +16,8 @@ export {
   removeCombatChars,
   resetInitiative,
   defenseDecrement,
-  defenseIncrement
+  defenseIncrement,
+  storeCombatChars
 } from "./initiative.js";
 
 export { auth, authCheck, authSignout } from "./auth.js";
