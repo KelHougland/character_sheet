@@ -17,18 +17,30 @@ const reducer = (state = initialState, action) => {
   let charList = state.charactersInCombat;
   switch (action.type) {
     case actionTypes.INITIATIVE_PASS:
+      let roundOver = false;
       let charInits = charList.map(char => {
         let tempChar = char;
         if (tempChar.initiative >= 50) {
+          if (tempChar.name === "Round") {
+            roundOver = true;
+          }
           tempChar.initiative -= 50;
           tempChar.turnCount += 1;
         }
         return tempChar.initiative;
       });
+      if (roundOver) {
+        charList = charList.map(char =>
+          updateObject(char, { defenseActions: 0 })
+        );
+      }
+
       let maxInit = Math.max(...charInits);
       while (maxInit < 50) {
         charList = charList.map(char =>
-          updateObject(char, { initiative: char.initiative + char.speed })
+          updateObject(char, {
+            initiative: char.initiative + char.speed + char.speedBonus
+          })
         );
         charInits = charList.map(char => char.initiative);
         maxInit = Math.max(...charInits);
