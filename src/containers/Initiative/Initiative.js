@@ -110,6 +110,12 @@ class Initiative extends Component {
               >
                 Turns Taken
               </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === "defenseActions" ? direction : null}
+                onClick={this.sortHandler("defenseActions")}
+              >
+                Defensive Actions
+              </Table.HeaderCell>
               <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -133,8 +139,7 @@ class Initiative extends Component {
           />
         </Table>
         <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
-        <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>
-        {" "}
+        <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>{" "}
         <Button onClick={this.props.resetInitiative}>Reset Initiative</Button>
         <br />
         {disabledText}
@@ -173,7 +178,9 @@ const mapDispatchToProps = dispatch => {
       dispatch(actionCreators.changeAddCharInit(newInit)),
     getCombatChars: () => dispatch(actionCreators.getCombatChars()),
     removeCombatChars: () => dispatch(actionCreators.removeCombatChars()),
-    resetInitiative: () => dispatch(actionCreators.resetInitiative())
+    resetInitiative: () => dispatch(actionCreators.resetInitiative()),
+    defActIncrement: id => dispatch(actionCreators.defenseIncrement(id)),
+    defActDecrement: id => dispatch(actionCreators.defenseDecrement(id))
   };
 };
 

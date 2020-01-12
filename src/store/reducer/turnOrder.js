@@ -8,6 +8,7 @@ const initialState = {
     speed: "speed",
     speedBonus: "speed bonus",
     initiative: "initiative",
+    defenseActions: "defenseActions",
     type: "PC"
   }
 };
@@ -34,6 +35,32 @@ const reducer = (state = initialState, action) => {
       }
       localStorage.setItem("charsInCombat", JSON.stringify(charList));
       return updateObject(state, { charactersInCombat: charList });
+
+    case actionTypes.DEFENSE_INCREMENT:
+      let incDefChars = charList.map(char => {
+        if (char.id === action.resultElId) {
+          return updateObject(char, {
+            defenseActions: char.defenseActions + 1
+          });
+        } else {
+          return char;
+        }
+      });
+      return updateObject(state, { charactersInCombat: incDefChars });
+
+    case actionTypes.DEFENSE_DECREMENT:
+      let deDefChars = charList.map(char => {
+        if (char.id === action.resultElId) {
+          return updateObject(char, {
+            defenseActions: char.defenseActions - 1
+          });
+        } else {
+          return char;
+        }
+      });
+
+      return updateObject(state, { charactersInCombat: deDefChars });
+
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
@@ -97,6 +124,7 @@ const reducer = (state = initialState, action) => {
           Number(action.character.speed) + Number(action.character.speedBonus),
         speedBonus: Number(action.character.speedBonus),
         initiative: Number(action.character.initiative),
+        defenseActions: 0,
         turnCount: 0
       };
       return updateObject(state, {
@@ -106,6 +134,7 @@ const reducer = (state = initialState, action) => {
           speed: "speed",
           speedBonus: "speed bonus",
           initiative: "initiative",
+          defenseActions: "defenseActions",
           type: "PC"
         }
       });
@@ -148,17 +177,18 @@ const reducer = (state = initialState, action) => {
           totalSpeed: 5,
           speedBonus: 0,
           initiative: 0,
+          defenseActions: 0,
           turnCount: 0,
           type: "NPC"
         }
       ];
 
       return updateObject(state, { charactersInCombat: defaultStart });
-      case actionTypes.RESET_INITIATIVE:
-        let resetChars = state.charactersInCombat.map(char => {
-          return updateObject(char,{initiative: 0, turnCount: 0})
-        })
-        return updateObject(state, {charactersInCombat: resetChars})
+    case actionTypes.RESET_INITIATIVE:
+      let resetChars = state.charactersInCombat.map(char => {
+        return updateObject(char, { initiative: 0, turnCount: 0 });
+      });
+      return updateObject(state, { charactersInCombat: resetChars });
     default:
       return state;
   }

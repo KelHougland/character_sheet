@@ -8,6 +8,13 @@ export const resetInitiative = () => {
   return { type: actionTypes.RESET_INITIATIVE };
 };
 
+export const defenseIncrement = resElId => {
+  return { type: actionTypes.DEFENSE_INCREMENT, resultElId: resElId };
+};
+
+export const defenseDecrement = resElId => {
+  return { type: actionTypes.DEFENSE_DECREMENT, resultElId: resElId };
+};
 
 export const speedIncrement = resElId => {
   return { type: actionTypes.SPEED_INCREMENT, resultElId: resElId };
@@ -85,6 +92,7 @@ export const getCombatChars = () => {
       speedBonus: 0,
       initiative: 0,
       turnCount: 0,
+      defenseActions: 0,
       type: "NPC"
     }
   ];

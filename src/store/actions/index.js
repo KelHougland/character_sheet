@@ -14,7 +14,9 @@ export {
   changeAddCharSpeedBonus,
   getCombatChars,
   removeCombatChars,
-  resetInitiative
+  resetInitiative,
+  defenseDecrement,
+  defenseIncrement
 } from "./initiative.js";
 
 export { auth, authCheck, authSignout } from "./auth.js";

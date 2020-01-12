@@ -35,6 +35,17 @@ const tableContent = props => {
         </Button>
       </Table.Cell>
       <Table.Cell>{character.turnCount}</Table.Cell>
+
+      <Table.Cell>
+        {character.defenseActions}{" "}
+        <Button onClick={() => props.propsToPass.defActIncrement(character.id)}>
+          +1
+        </Button>
+        <Button onClick={() => props.propsToPass.defActDecrement(character.id)}>
+          -1
+        </Button>
+      </Table.Cell>
+
       <Table.Cell>
         {" "}
         <Button
