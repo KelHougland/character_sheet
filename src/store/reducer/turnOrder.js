@@ -76,7 +76,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          return updateObject(char, { speedBonus: char.speedBonus + 1 });
+          return updateObject(char, { speedBonus: char.speedBonus + 1, totalSpeed: char.totalSpeed + 1 });
         } else {
           return char;
         }
@@ -85,7 +85,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SPEED_DECREMENT:
       let deSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          return updateObject(char, { speedBonus: char.speedBonus - 1 });
+          return updateObject(char, { speedBonus: char.speedBonus - 1, totalSpeed: char.totalSpeed - 1 });
         } else {
           return char;
         }
@@ -133,7 +133,7 @@ const reducer = (state = initialState, action) => {
         name: action.character.name,
         speed: Number(action.character.speed),
         totalSpeed:
-          Number(action.character.speed) + Number(action.character.speedBonus),
+          (Number(action.character.speed) + Number(action.character.speedBonus)),
         speedBonus: Number(action.character.speedBonus),
         initiative: Number(action.character.initiative),
         defenseActions: 0,
