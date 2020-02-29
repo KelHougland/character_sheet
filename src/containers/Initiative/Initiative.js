@@ -180,7 +180,6 @@ const mapDispatchToProps = dispatch => {
     getCombatChars: () => dispatch(actionCreators.getCombatChars()),
     removeCombatChars: () => dispatch(actionCreators.removeCombatChars()),
     resetInitiative: () => dispatch(actionCreators.resetInitiative()),
-    defActIncrement: id => dispatch(actionCreators.defenseIncrement(id)),
     defActDecrement: id => dispatch(actionCreators.defenseDecrement(id)),
     storeCombatChars: (charList) => dispatch(actionCreators.storeCombatChars(charList))
   };

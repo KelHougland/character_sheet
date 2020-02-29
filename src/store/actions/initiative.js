@@ -8,9 +8,6 @@ export const resetInitiative = () => {
   return { type: actionTypes.RESET_INITIATIVE };
 };
 
-export const defenseIncrement = resElId => {
-  return { type: actionTypes.DEFENSE_INCREMENT, resultElId: resElId };
-};
 
 export const defenseDecrement = resElId => {
   return { type: actionTypes.DEFENSE_DECREMENT, resultElId: resElId };

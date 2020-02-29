@@ -16,7 +16,6 @@ export {
   removeCombatChars,
   resetInitiative,
   defenseDecrement,
-  defenseIncrement,
   storeCombatChars
 } from "./initiative.js";
 

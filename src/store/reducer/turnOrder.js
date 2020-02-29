@@ -8,7 +8,6 @@ const initialState = {
     speed: "speed",
     speedBonus: "speed bonus",
     initiative: "initiative",
-    defenseActions: "defenseActions",
     type: "PC"
   }
 };
@@ -29,11 +28,6 @@ const reducer = (state = initialState, action) => {
         }
         return tempChar.initiative;
       });
-      if (roundOver) {
-        charList = charList.map(char =>
-          updateObject(char, { defenseActions: 0 })
-        );
-      }
 
       let maxInit = Math.max(...charInits);
       while (maxInit < 50) {
@@ -48,24 +42,16 @@ const reducer = (state = initialState, action) => {
       localStorage.setItem("charsInCombat", JSON.stringify(charList));
       return updateObject(state, { charactersInCombat: charList });
 
-    case actionTypes.DEFENSE_INCREMENT:
-      let incDefChars = charList.map(char => {
-        if (char.id === action.resultElId) {
-          return updateObject(char, {
-            defenseActions: char.defenseActions + 1
-          });
-        } else {
-          return char;
-        }
-      });
-      return updateObject(state, { charactersInCombat: incDefChars });
-
     case actionTypes.DEFENSE_DECREMENT:
       let deDefChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          return updateObject(char, {
-            defenseActions: char.defenseActions - 1
-          });
+          if (char.initiative > -26) {
+            return updateObject(char, {
+              initiative: char.initiative - 25
+            });
+          } else {
+            return char;
+          }
         } else {
           return char;
         }
@@ -76,7 +62,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          return updateObject(char, { speedBonus: char.speedBonus + 1, totalSpeed: char.totalSpeed + 1 });
+          return updateObject(char, {
+            speedBonus: char.speedBonus + 1,
+            totalSpeed: char.totalSpeed + 1
+          });
         } else {
           return char;
         }
@@ -85,7 +74,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SPEED_DECREMENT:
       let deSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {
-          return updateObject(char, { speedBonus: char.speedBonus - 1, totalSpeed: char.totalSpeed - 1 });
+          return updateObject(char, {
+            speedBonus: char.speedBonus - 1,
+            totalSpeed: char.totalSpeed - 1
+          });
         } else {
           return char;
         }
@@ -133,7 +125,7 @@ const reducer = (state = initialState, action) => {
         name: action.character.name,
         speed: Number(action.character.speed),
         totalSpeed:
-          (Number(action.character.speed) + Number(action.character.speedBonus)),
+          Number(action.character.speed) + Number(action.character.speedBonus),
         speedBonus: Number(action.character.speedBonus),
         initiative: Number(action.character.initiative),
         defenseActions: 0,
@@ -198,12 +190,17 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { charactersInCombat: defaultStart });
     case actionTypes.RESET_INITIATIVE:
       let resetChars = state.charactersInCombat.map(char => {
-        return updateObject(char, { totalSpeed: char.speed, speedBonus: 0, initiative: 0, turnCount: 0 });
+        return updateObject(char, {
+          totalSpeed: char.speed,
+          speedBonus: 0,
+          initiative: 0,
+          turnCount: 0
+        });
       });
       return updateObject(state, { charactersInCombat: resetChars });
     case actionTypes.STORE_COMBAT_CHARS:
-      localStorage.setItem("charsInCombat", JSON.stringify(charList))
-      return updateObject(state, {charactersInCombat: action.chars})
+      localStorage.setItem("charsInCombat", JSON.stringify(charList));
+      return updateObject(state, { charactersInCombat: action.chars });
     default:
       return state;
   }
