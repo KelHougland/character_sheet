@@ -38,7 +38,7 @@ const tableContent = props => {
 
       <Table.Cell>
         <Button onClick={() => props.propsToPass.defActDecrement(character.id)} disabled = {(character.initiative < -25) ? true : false}>
-          Take
+          Defend
         </Button>
       </Table.Cell>
 

@@ -77,6 +77,14 @@ class Initiative extends Component {
 
     return (
       <div className="combatTableDiv">
+        <Button onClick={() => this.props.storeCombatChars(this.props.charsInCombat)}>Store Characters</Button>{" "}
+        <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
+        <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>{" "}
+        <Button onClick={this.props.resetInitiative}>Reset Initiative</Button>
+        <br />
+        {disabledText}
+        <br />
+        <a href="/">Return to Home</a>
         <Table celled collapsing unstackable sortable>
           <Table.Header>
             <Table.Row>
@@ -118,12 +126,6 @@ class Initiative extends Component {
               </Table.HeaderCell>
               <Table.HeaderCell>Delete/Add</Table.HeaderCell>
             </Table.Row>
-          </Table.Header>
-          <TableContent
-            charList={this.props.charsInCombat}
-            propsToPass={this.props}
-          />
-          {this.props.charForm}
           <AddCharForm
             charName={this.props.addCharacter.name}
             charSpeed={this.props.addCharacter.speed}
@@ -137,15 +139,13 @@ class Initiative extends Component {
             charToAdd={this.props.addCharacter}
             addDisable={addDisabled}
           />
+          </ Table.Header>
+          <TableContent
+            charList={this.props.charsInCombat}
+            propsToPass={this.props}
+          />
         </Table>
-        <Button onClick={() => this.props.storeCombatChars(this.props.charsInCombat)}>Store Characters</Button>{" "}
-        <Button onClick={this.props.initiativePass}>Next Turn</Button>{" "}
-        <Button onClick={this.props.removeCombatChars}>Remove all Chars</Button>{" "}
-        <Button onClick={this.props.resetInitiative}>Reset Initiative</Button>
-        <br />
-        {disabledText}
-        <br />
-        <a href="/">Return to Home</a>
+
       </div>
     );
   }

@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Table, Input } from "semantic-ui-react";
 
 const addCharForm = props => (
-  <Table.Footer>
+
     <Table.Row>
       <Table.HeaderCell>
         <Input
@@ -44,7 +44,6 @@ const addCharForm = props => (
         </Button>
       </Table.HeaderCell>
     </Table.Row>
-  </Table.Footer>
 );
 
 export default addCharForm;
