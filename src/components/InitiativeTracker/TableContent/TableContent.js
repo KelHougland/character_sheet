@@ -6,6 +6,7 @@ const tableContent = props => {
   let charView = props.charList.map(character => (
     <Table.Row
       positive={character.initiative >= 50 ? true : false}
+      negative={character.name == 'Round' ? true : false}
       key={character.id}
     >
       <Table.Cell>{character.name}</Table.Cell>
