@@ -39,6 +39,7 @@ const reducer = (state = initialState, action) => {
         charInits = charList.map(char => char.initiative);
         maxInit = Math.max(...charInits);
       }
+      charList.sort((a, b) => (a.initiative > b.initiative) ? -1 : 1)
       localStorage.setItem("charsInCombat", JSON.stringify(charList));
       return updateObject(state, { charactersInCombat: charList });
 
