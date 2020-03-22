@@ -65,7 +65,8 @@ const reducer = (state = initialState, action) => {
         if (char.id === action.resultElId) {
           if (char.initiative > -26) {
             return updateObject(char, {
-              initiative: char.initiative - 50
+              initiative: char.initiative - 50,
+              turnCount: Char.turnCount += 1
             });
           } else {
             return char;
