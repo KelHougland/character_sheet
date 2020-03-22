@@ -38,6 +38,12 @@ const tableContent = props => {
       <Table.Cell>{character.turnCount}</Table.Cell>
 
       <Table.Cell>
+        <Button onClick={() => props.propsToPass.takeAction(character.id)} disabled = {(character.initiative < 50) ? true : false}>
+          Take takeAction
+        </Button>
+      </Table.Cell>
+
+      <Table.Cell>
         <Button onClick={() => props.propsToPass.defActDecrement(character.id)} disabled = {(character.initiative < -25) ? true : false}>
           Defend
         </Button>

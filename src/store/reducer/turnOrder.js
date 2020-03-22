@@ -60,6 +60,23 @@ const reducer = (state = initialState, action) => {
 
       return updateObject(state, { charactersInCombat: deDefChars });
 
+    case actionTypes.TAKE_ACTION:
+      let actChars = charList.map(char => {
+        if (char.id === action.resultElId) {
+          if (char.initiative > -26) {
+            return updateObject(char, {
+              initiative: char.initiative - 50
+            });
+          } else {
+            return char;
+          }
+        } else {
+          return char;
+        }
+      });
+
+      return updateObject(state, { charactersInCombat: actChars });
+
     case actionTypes.SPEED_INCREMENT:
       let incSpeedChars = charList.map(char => {
         if (char.id === action.resultElId) {

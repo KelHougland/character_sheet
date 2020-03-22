@@ -34,7 +34,8 @@ const addCharForm = props => (
         ></Input>
       </Table.HeaderCell>
       <Table.HeaderCell>0</Table.HeaderCell>
-      <Table.HeaderCell>0</Table.HeaderCell>
+      <Table.HeaderCell></Table.HeaderCell>
+      <Table.HeaderCell></Table.HeaderCell>
       <Table.HeaderCell>
         <Button
           onClick={() => props.addChar(Object.assign({}, props.charToAdd))}

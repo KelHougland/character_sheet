@@ -13,6 +13,10 @@ export const defenseDecrement = resElId => {
   return { type: actionTypes.DEFENSE_DECREMENT, resultElId: resElId };
 };
 
+export const takeAction = resElId => {
+  return { type: actionTypes.TAKE_ACTION, resultElId: resElId };
+};
+
 export const speedIncrement = resElId => {
   return { type: actionTypes.SPEED_INCREMENT, resultElId: resElId };
 };

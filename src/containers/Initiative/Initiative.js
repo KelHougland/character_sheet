@@ -119,8 +119,12 @@ class Initiative extends Component {
                 Turns Taken
               </Table.HeaderCell>
               <Table.HeaderCell
-                sorted={column === "defenseActions" ? direction : null}
-                onClick={this.sortHandler("defenseActions")}
+
+              >
+                Active Actions
+              </Table.HeaderCell>
+              <Table.HeaderCell
+
               >
                 Defensive Actions
               </Table.HeaderCell>
@@ -181,6 +185,7 @@ const mapDispatchToProps = dispatch => {
     removeCombatChars: () => dispatch(actionCreators.removeCombatChars()),
     resetInitiative: () => dispatch(actionCreators.resetInitiative()),
     defActDecrement: id => dispatch(actionCreators.defenseDecrement(id)),
+    takeAction: id => dispatch(actionCreators.takeAction(id)),
     storeCombatChars: (charList) => dispatch(actionCreators.storeCombatChars(charList))
   };
 };
